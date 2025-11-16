@@ -1,0 +1,116 @@
+/* style.css
+   Clean, responsive styling, light/dark support.
+   Keep it simple and easy to modify.
+*/
+
+/* ---------- Base & variables ---------- */
+:root{
+  --bg: #ffffff;
+  --card: #f7f7fb;
+  --text: #0b1320;
+  --muted: #6b7280;
+  --accent: #0066cc;
+  --glass: rgba(255,255,255,0.6);
+  --radius: 12px;
+}
+
+[data-theme="dark"]{
+  --bg: #0b0f14;
+  --card: #0f1720;
+  --text: #e6eef8;
+  --muted: #9aa6b2;
+  --accent: #66b2ff;
+  --glass: rgba(255,255,255,0.03);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+  font-size:16px;
+  scroll-behavior:smooth;
+}
+
+/* ---------- Layout helpers ---------- */
+.container{max-width:1100px;margin:0 auto;padding:28px}
+.section{padding:48px 0}
+.alt{background:linear-gradient(180deg,var(--card),transparent)}
+
+.small{font-size:0.95rem}
+.muted{color:var(--muted)}
+.accent{color:var(--accent)}
+
+/* ---------- Header / Nav ---------- */
+.site-header{
+  position:sticky;top:0;z-index:60;
+  background:linear-gradient(0deg, rgba(0,0,0,0.04), rgba(255,255,255,0.02));
+  backdrop-filter: blur(8px);
+  border-bottom:1px solid rgba(0,0,0,0.04);
+}
+.nav-inner{display:flex;align-items:center;gap:16px;justify-content:space-between}
+.brand{font-weight:700;text-decoration:none;color:var(--text);font-size:1.05rem}
+.nav{display:flex;gap:14px}
+.nav a{color:var(--text);text-decoration:none;padding:8px;border-radius:8px}
+.nav a:hover{background:var(--glass)}
+
+.nav-actions{display:flex;gap:8px;align-items:center}
+.btn{background:none;border:0;padding:8px;cursor:pointer;border-radius:8px}
+.icon-btn{font-size:1.05rem}
+.hamburger{display:none}
+.hamburger .hamburger-bar{display:block;width:22px;height:2px;background:var(--text);position:relative}
+.hamburger .hamburger-bar::after,.hamburger .hamburger-bar::before{
+  content:"";position:absolute;left:0;width:22px;height:2px;background:var(--text)}
+.hamburger .hamburger-bar::before{top:-7px}
+.hamburger .hamburger-bar::after{top:7px}
+
+/* ---------- Hero ---------- */
+.hero{padding:48px 0}
+.hero-inner{display:grid;grid-template-columns:1fr 320px;gap:28px;align-items:center}
+.hero-text h1{font-size:2.2rem;margin:0 0 10px}
+.lead{font-size:1.05rem;margin-bottom:18px;color:var(--muted)}
+.cta-row{display:flex;gap:12px;margin-bottom:12px}
+.btn.primary{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;text-decoration:none}
+.btn.outline{border:1px solid var(--accent);padding:8px 12px;border-radius:10px;color:var(--accent);text-decoration:none}
+
+.hero-card{background:var(--card);padding:18px;border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+.avatar{width:100%;height:120px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:36px;background:linear-gradient(135deg,var(--accent),#3aa0ff);color:white;margin-bottom:14px}
+.hero-stats{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.hero-stats li{display:flex;justify-content:space-between;font-size:0.95rem}
+
+/* ---------- Two-column ---------- */
+.two-col{display:grid;grid-template-columns:1fr 360px;gap:24px}
+.skill-list{list-style:none;padding:0;margin:0}
+.skill-list li{margin-bottom:8px}
+
+/* ---------- Grid cards ---------- */
+.grid-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.04)}
+
+/* ---------- Projects ---------- */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.project-card{background:transparent;padding:16px;border-radius:12px;border:1px solid rgba(0,0,0,0.04)}
+.project-card a{color:var(--accent);text-decoration:none;font-weight:600}
+
+/* ---------- Contact ---------- */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+
+/* ---------- Footer ---------- */
+.site-footer{padding:18px 0;border-top:1px solid rgba(0,0,0,0.04);text-align:center}
+
+/* ---------- Utilities ---------- */
+.small{font-size:0.95rem}
+.lead{max-width:60ch}
+
+/* ---------- Responsive ---------- */
+@media (max-width:880px){
+  .hero-inner{grid-template-columns:1fr}
+  .two-col{grid-template-columns:1fr}
+  .nav{display:none}
+  .hamburger{display:block}
+  .nav[open]{display:flex;flex-direction:column;position:absolute;top:68px;right:20px;background:var(--card);padding:12px;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.12)}
+}

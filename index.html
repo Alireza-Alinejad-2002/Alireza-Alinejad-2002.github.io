@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!--
+    Portfolio: Alireza Alinejad
+    Static site for GitHub Pages: https://alireza-alinejad-2002.github.io/
+    Files: index.html, style.css, script.js
+  -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Alireza Alinejad — Robotics & Aerospace</title>
+
+  <!-- SEO / social -->
+  <meta name="description" content="Alireza Alinejad — Robotics & Aerospace engineering student. Projects: FWMAV, ROS2 navigation, control systems, quadrotor simulation." />
+  <link rel="icon" href="data:,">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Fonts (system-first stack) -->
+  <style>
+    :root { --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    html { font-family: var(--font-sans); }
+  </style>
+</head>
+<body>
+  <!-- Top navigation -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand" href="/">Alireza Alinejad</a>
+
+      <nav id="main-nav" class="nav">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#research">Academic</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="btn icon-btn" aria-label="Toggle dark mode">🌙</button>
+        <button id="nav-toggle" class="btn hamburger" aria-label="Open menu" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section id="hero" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Hi — I'm <span class="accent">Alireza Alinejad</span></h1>
+          <p class="lead">
+            Robotics & Aerospace Engineering student at Sharif University of Technology.
+            I design intelligent robotic systems and AI-enabled hardware — from biomimetic
+            flapping mechanisms to ROS2-enabled autonomy.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn primary" href="#projects">View projects</a>
+            <a class="btn outline" href="#contact">Get in touch</a>
+          </div>
+
+          <p class="meta small">
+            B.Sc. Aerospace Engineering — GPA 3.67. Based on CV and research profile. :contentReference[oaicite:1]{index=1}
+          </p>
+        </div>
+
+        <div class="hero-card">
+          <!-- Placeholder for photo or avatar -->
+          <div class="avatar">AA</div>
+          <ul class="hero-stats">
+            <li><strong>Interests</strong><span>Robotics, ML, Control</span></li>
+            <li><strong>Tools</strong><span>ROS2 · SolidWorks · MATLAB</span></li>
+            <li><strong>Contact</strong><span><a href="mailto:Alireza.Alinejad@ae.sharif.edu">Email</a></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section container">
+      <h2>About Me</h2>
+      <div class="two-col">
+        <div>
+          <p>
+            I'm a B.Sc. Aerospace Engineering student at Sharif University of Technology (GPA 3.67).
+            My main focus is on robotics, machine learning, control systems, swarm intelligence, and
+            mechatronics. I enjoy turning messy problems into elegant, tested systems.
+          </p>
+
+          <p>
+            Practical experience includes prototyping biomimetic mechanisms, ROS2 simulation & deployment,
+            control experiments with embedded platforms, and algorithm reimplementation for tracking.
+          </p>
+
+          <p class="small muted">
+            Quick links: <a href="https://www.linkedin.com/in/2002-alireza-alinejad" target="_blank">LinkedIn</a> ·
+            <a href="https://github.com/Alireza-Alinejad-2002" target="_blank">GitHub</a>.
+          </p>
+        </div>
+
+        <div>
+          <h3>Key skills</h3>
+          <ul class="skill-list">
+            <li><strong>Languages:</strong> Python, C/C++, MATLAB, Simulink, Arduino</li>
+            <li><strong>Tools:</strong> ROS2, Gazebo, SolidWorks, TensorFlow</li>
+            <li><strong>Soft:</strong> Problem-solving, teamwork, communication, critical thinking</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills & Experience -->
+    <section id="skills" class="section alt">
+      <div class="container">
+        <h2>Skills & Experience</h2>
+
+        <div class="grid-cards">
+          <div class="card">
+            <h4>Programming</h4>
+            <p>Python · C/C++ · MATLAB · Simulink · Arduino</p>
+          </div>
+
+          <div class="card">
+            <h4>Software & Tools</h4>
+            <p>ROS2 · Gazebo · SolidWorks · TensorFlow · Linux</p>
+          </div>
+
+          <div class="card">
+            <h4>Systems & Control</h4>
+            <p>PID & advanced control, simulation (6DOF), embedded experiments (Raspberry Pi, Arduino)</p>
+          </div>
+
+          <div class="card">
+            <h4>Soft Skills</h4>
+            <p>Teamwork, communication, critical thinking, problem-solving</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section container">
+      <h2>Projects</h2>
+      <p class="small muted">Selected projects from research and coursework — links point to potential sub-pages for each item.</p>
+
+      <div class="projects-grid">
+        <!-- Each card has a link ready to expand into a dedicated page (e.g., /Dragonfly/) -->
+        <article class="project-card">
+          <h3><a href="/Dragonfly/">Dragonfly-Inspired Flapping Wing MAV</a></h3>
+          <p>Design & prototype of a biomimetic flapping mechanism. Tools: SolidWorks, FDM prototyping, Arduino, MATLAB.</p>
+        </article>
+
+        <article class="project-card">
+          <h3><a href="/Inverted-Rotary-Pendulum/">Inverted Rotary Pendulum Control</a></h3>
+          <p>Stabilization experiments using Raspberry Pi and C++; embedded control setup and testing.</p>
+        </article>
+
+        <article class="project-card">
+          <h3><a href="/ROS2-Mobile-Robot/">ROS2-Based Mobile Robot Navigation</a></h3>
+          <p>TurtleBot3 simulation in Gazebo and deployment on physical platform; NAO interaction experiments.</p>
+        </article>
+
+        <article class="project-card">
+          <h3><a href="/MCST-Reimplementation/">MCST Tracking Algorithm Reimplementation</a></h3>
+          <p>Reproduced adaptive tracking model using Bi-LSTM and PyTorch; maneuver compensation unit added.</p>
+        </article>
+
+        <article class="project-card">
+          <h3><a href="/Amphibious-Aircraft/">Amphibious Aircraft Design (RAeS)</a></h3>
+          <p>Conceptual amphibious aircraft design using MATLAB & SolidWorks; CS-23-oriented conceptual analyses.</p>
+        </article>
+
+        <article class="project-card">
+          <h3><a href="/Quadrotor-PID/">Quadrotor PID Control Simulation</a></h3>
+          <p>6DOF model & PID control simulated in MATLAB/Simulink; validated stability and control tuning procedures.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Academic & Research -->
+    <section id="research" class="section alt">
+      <div class="container">
+        <h2>Academic & Research</h2>
+        <div class="two-col">
+          <div>
+            <h4>Teaching & TA Roles</h4>
+            <ul>
+              <li>Aircraft Design — TA</li>
+              <li>Numerical Methods — TA</li>
+              <li>Control Systems Lab — TA</li>
+              <li>Engineering Dynamics — TA</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Publications & Patents</h4>
+            <p>
+              Mention: <em>Design and Development of a Dragonfly-Inspired Flapping Mechanism</em> — patent pending (filed Nov 2025). See CV for details. :contentReference[oaicite:2]{index=2}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section container">
+      <h2>Contact</h2>
+
+      <div class="contact-grid">
+        <div class="card">
+          <h4>Email</h4>
+          <p><a href="mailto:Alireza.Alinejad@ae.sharif.edu">Alireza.Alinejad@ae.sharif.edu</a></p>
+          <p class="small muted">Replace with preferred contact address if needed.</p>
+        </div>
+
+        <div class="card">
+          <h4>LinkedIn</h4>
+          <p><a href="https://www.linkedin.com/in/2002-alireza-alinejad" target="_blank">linkedin.com/in/2002-alireza-alinejad</a></p>
+        </div>
+
+        <div class="card">
+          <h4>GitHub</h4>
+          <p><a href="https://github.com/Alireza-Alinejad-2002" target="_blank">github.com/Alireza-Alinejad-2002</a></p>
+        </div>
+      </div>
+
+      <p class="small muted">Note: project pages are placeholders — add matching subfolders (e.g., /Dragonfly/index.html) to expand each project.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Alireza Alinejad — Robotics & Aerospace · GitHub Pages</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
