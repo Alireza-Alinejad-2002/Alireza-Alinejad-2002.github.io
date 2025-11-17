@@ -1,80 +1,114 @@
-/* script.js
-   Handles:
-   - dark mode toggle with persistent preference (localStorage)
-   - responsive nav toggle
-   - smooth-scroll enhancement for in-page links
-   - small runtime UI behavior
-*/
+/* =========================================================
+DARK MODE TOGGLE (checkbox switch)
+========================================================= */
 
-(() => {
-  const root = document.documentElement;
-  const themeToggle = document.getElementById('theme-toggle');
-  const navToggle = document.getElementById('nav-toggle');
-  const nav = document.getElementById('main-nav');
-  const yearEl = document.getElementById('year');
+const themeToggle = document.getElementById("theme-toggle");
+const body = document.body;
 
-  // --- Initialize year ---
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+// Load saved preference
+const savedTheme = localStorage.getItem("theme");
 
-  // --- Dark mode: read saved preference or system preference ---
-  const saved = localStorage.getItem('theme'); // 'light' | 'dark' | null
-  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+if (savedTheme === "dark") {
+  body.classList.add("dark-theme");
+  if (themeToggle) themeToggle.checked = true;
+} else {
+  if (themeToggle) themeToggle.checked = false;
+}
 
-  function applyTheme(theme) {
-    if (theme === 'dark') {
-      root.setAttribute('data-theme', 'dark');
-      themeToggle.textContent = '☀️';
+// Toggle theme on change
+if (themeToggle) {
+  themeToggle.addEventListener("change", () => {
+    if (themeToggle.checked) {
+      body.classList.add("dark-theme");
+      localStorage.setItem("theme", "dark");
     } else {
-      root.removeAttribute('data-theme');
-      themeToggle.textContent = '🌙';
+      body.classList.remove("dark-theme");
+      localStorage.setItem("theme", "light");
+    }
+  });
+}
+
+
+/* =========================================================
+SMOOTH SCROLL OFFSET (Fix for Fixed Navbar)
+========================================================= */
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function (e) {
+    const href = this.getAttribute("href");
+    if (href === "#" || !href) return;
+
+    const target = document.querySelector(href);
+    if (!target) return;
+
+    e.preventDefault();
+
+    const navbarHeight = document.querySelector(".navbar").offsetHeight;
+    const targetPos = target.getBoundingClientRect().top + window.scrollY;
+    const offset = targetPos - navbarHeight + 5;
+
+    window.scrollTo({
+      top: offset,
+      behavior: "smooth"
+    });
+  });
+});
+
+
+/* =========================================================
+TYPEWRITER EFFECT FOR OBJECTIVE (word by word)
+========================================================= */
+
+(function () {
+  const objectiveEl = document.getElementById("objective-text");
+  if (!objectiveEl) return;
+
+  const text = objectiveEl.dataset.text;
+  if (!text) return;
+
+  const words = text.split(" ");
+  let index = 0;
+  objectiveEl.textContent = "";
+
+  const typingDelay = 150; // ms between words
+
+  function typeNextWord() {
+    if (index >= words.length) return;
+    objectiveEl.textContent += (index > 0 ? " " : "") + words[index];
+    index += 1;
+    if (index < words.length) {
+      setTimeout(typeNextWord, typingDelay);
     }
   }
 
-  // Decide initial theme
-  applyTheme(saved || (prefersDark ? 'dark' : 'light'));
+  // Start typing shortly after page load
+  setTimeout(typeNextWord, 600);
+})();
 
-  // Toggle handler
-  themeToggle.addEventListener('click', () => {
-    const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-    const next = current === 'dark' ? 'light' : 'dark';
-    applyTheme(next);
-    localStorage.setItem('theme', next);
-  });
 
-  // --- Mobile nav toggle ---
-  navToggle.addEventListener('click', () => {
-    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-    navToggle.setAttribute('aria-expanded', (!expanded).toString());
-    // On small screens we toggle a simple open attribute on nav that CSS reads
-    if (!expanded) {
-      nav.setAttribute('open', 'true');
-    } else {
-      nav.removeAttribute('open');
-    }
-  });
+/* =========================================================
+SCROLL-TRIGGERED REVEAL ANIMATIONS
+========================================================= */
 
-  // Close mobile nav when a nav link is clicked (improves UX)
-  nav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      if (nav.hasAttribute('open')) nav.removeAttribute('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    });
-  });
+(function () {
+  const revealEls = document.querySelectorAll(".reveal, .project-card");
 
-  // Smooth scrolling fallback: browsers mostly support CSS smooth scrolling via style,
-  // but we keep a small JS enhancement to offset sticky header if needed.
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      if (href.length === 1) return;
-      const target = document.querySelector(href);
-      if (!target) return;
-      e.preventDefault();
-      const headerOffset = document.querySelector('.site-header')?.offsetHeight || 72;
-      const elementPosition = target.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 8;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-    });
-  });
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
 
+    revealEls.forEach(el => observer.observe(el));
+  } else {
+    // Fallback: show everything if IntersectionObserver is not supported
+    revealEls.forEach(el => el.classList.add("visible"));
+  }
 })();
