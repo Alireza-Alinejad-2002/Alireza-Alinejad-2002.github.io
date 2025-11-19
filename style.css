@@ -19,14 +19,14 @@ COLOR PALETTE
   /* Hero text & buttons (light mode) */
   --hero-text: #111827;
   --hero-link: #111827;
-  --hero-btn-primary-bg: #ffffff;
-  --hero-btn-primary-text: #111827;
+  --hero-btn-primary-bg: #2563eb;
+  --hero-btn-primary-text: #ffffff;
   --hero-btn-outline-bg: transparent;
   --hero-btn-outline-border: #111827;
   --hero-btn-outline-text: #111827;
 
   /* Hero subtitle color */
-  --hero-subtitle-color: #2563eb; /* darker green in light mode */
+  --hero-subtitle-color: #2563eb;
 }
 
 body.dark-theme {
@@ -468,13 +468,13 @@ HERO SECTION
 body:not(.dark-theme) .hero-bg {
   background-image:
     linear-gradient(to bottom, rgba(232, 232, 232, 0.75), rgba(232, 232, 232, 0.75)),
-    url("images/hero-bg-light.jpg");  /* light-mode image */
+    url("images/hero-bg-light.webp");  /* light-mode image */
 }
 
 body.dark-theme .hero-bg {
   background-image:
     linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("images/hero-bg-dark.jpg");   /* dark-mode image */
+    url("images/hero-bg-dark.png");   /* dark-mode image */
 }
 
 /* Hero content */
@@ -614,12 +614,12 @@ body.dark-theme .hero-subtitle {
   border: 1px solid var(--hero-btn-primary-text);
 }
 
-/* Light mode: light green background for both buttons */
+/* Light mode: background for both buttons */
 body:not(.dark-theme) .primary-btn,
 body:not(.dark-theme) .outline-btn {
-  background: #2563eb;    /* light green */
-  color: #ffffff;         /* dark green text */
-  border-color: #ffffff;
+  background: var(--hero-btn-primary-bg);    
+  color: var(--hero-btn-primary-text);         
+  border-color: var(--hero-btn-outline-border);
 }
 
 .primary-btn:hover,
