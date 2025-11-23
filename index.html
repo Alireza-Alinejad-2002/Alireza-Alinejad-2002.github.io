@@ -9,7 +9,7 @@
   <!-- Main styles -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Font Awesome for icons -->
+  <!-- Font Awesome for body icons -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -19,63 +19,129 @@
 <body>
   <!-- Navigation Bar -->
   <nav class="navbar">
-    <!-- Top bar: centered name -->
-    <div class="nav-bar-top">
+    <div class="navbar-container">
+      
+      <!-- Left: Name (Desktop only) -->
       <div class="nav-title">Alireza Alinejad</div>
 
-      <!-- New Dark Mode Toggle (Uiverse.io by Galahhad, adapted) -->
-      <label class="theme-switch nav-theme-toggle">
-        <input
-          type="checkbox"
-          class="theme-switch__checkbox"
-          id="theme-toggle"
-          aria-label="Toggle dark mode"
-        >
-        <div class="theme-switch__container">
-          <div class="theme-switch__clouds"></div>
-          <div class="theme-switch__stars-container">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z"
-                fill="currentColor">
-              </path>
-            </svg>
+      <!-- Center: Menu -->
+      <div class="menu">
+        
+        <!-- 1. Home -->
+        <a href="#hero" class="link" aria-label="Home">
+          <div class="link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
           </div>
-          <div class="theme-switch__circle-container">
-            <div class="theme-switch__sun-moon-container">
-              <div class="theme-switch__moon">
-                <div class="theme-switch__spot"></div>
-                <div class="theme-switch__spot"></div>
-                <div class="theme-switch__spot"></div>
+          <span class="link-title">Home</span>
+        </a>
+
+        <!-- 2. About Me (Desktop) -->
+        <a href="#about" class="link desktop-link" aria-label="About Me">
+          <div class="link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+          <span class="link-title">About Me</span>
+        </a>
+
+        <!-- 3. Education -->
+        <a href="#education" class="link" aria-label="Education">
+          <div class="link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+          </div>
+          <span class="link-title">Education</span>
+        </a>
+
+        <!-- 4. Patent & Publications (Desktop) -->
+        <a href="#publications" class="link desktop-link" aria-label="Patent & Publications">
+          <div class="link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M16 13H8"></path><path d="M16 17H8"></path><path d="M10 9H8"></path></svg>
+          </div>
+          <span class="link-title">Patent & Publications</span>
+        </a>
+
+        <!-- 5. Projects -->
+        <a href="#projects" class="link" aria-label="Projects">
+          <div class="link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+          </div>
+          <span class="link-title">Projects</span>
+        </a>
+
+        <!-- 6. Skills (Desktop) -->
+        <a href="#skills" class="link desktop-link" aria-label="Skills">
+          <div class="link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+          </div>
+          <span class="link-title">Skills</span>
+        </a>
+
+        <!-- 7. Honors (Desktop) -->
+        <a href="#honors" class="link desktop-link" aria-label="Honors">
+          <div class="link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8m-4-9v9m0-9a5 5 0 0 1-5-5V3h10v4a5 5 0 0 1-5 5z"></path></svg>
+          </div>
+          <span class="link-title">Honors & Awards</span>
+        </a>
+
+        <!-- 8. Memberships (Desktop) -->
+        <a href="#memberships" class="link desktop-link" aria-label="Memberships">
+          <div class="link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <span class="link-title">Memberships</span>
+        </a>
+
+        <!-- 9. Certifications (Desktop) -->
+        <a href="#certifications" class="link desktop-link" aria-label="Certifications">
+          <div class="link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+          </div>
+          <span class="link-title">Certifications</span>
+        </a>
+
+        <!-- 10. Contact -->
+        <a href="#contact" class="link" aria-label="Get In Touch">
+          <div class="link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          </div>
+          <span class="link-title">Contact</span>
+        </a>
+      </div>
+
+      <!-- Right: Dark Mode Toggle -->
+      <div class="nav-toggle-wrapper">
+        <label class="theme-switch nav-theme-toggle">
+          <input type="checkbox" class="theme-switch__checkbox" id="theme-toggle" aria-label="Toggle dark mode">
+          <div class="theme-switch__container">
+            <div class="theme-switch__clouds"></div>
+            <div class="theme-switch__stars-container">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <div class="theme-switch__circle-container">
+              <div class="theme-switch__sun-moon-container">
+                <div class="theme-switch__moon">
+                  <div class="theme-switch__spot"></div>
+                  <div class="theme-switch__spot"></div>
+                  <div class="theme-switch__spot"></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </label>
-    </div>
+        </label>
+      </div>
 
-    <!-- Centered navigation menu -->
-    <ul class="nav-menu">
-      <li><a href="#about">About</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    </div>
   </nav>
 
   <!-- Hero Section -->
   <section id="hero" class="hero">
-    <!-- Wide Background -->
     <div class="hero-bg"></div>
-
     <div class="hero-content">
-      <!-- Round Profile Image -->
       <img src="images/profile.png" alt="Profile photo of Alireza Alinejad" class="profile-pic">
-
       <h1 class="hero-title">Alireza Alinejad</h1>
       <h2 class="hero-subtitle">Aerospace Engineering Student &amp; Robotics Enthusiast</h2>
-
-      <!-- Contact summary in hero (with icons) -->
       <div class="hero-contact">
         <div class="hero-contact-item">
           <i class="fa-solid fa-envelope"></i>
@@ -90,141 +156,79 @@
           <span>Tehran, Iran</span>
         </div>
       </div>
-
       <div class="hero-buttons">
-        <a href="#about" class="hero-btn primary-btn">Explore My Portfolio ↓</a>
-
-        <!-- CV download button -->
-        <a href="assets/CV - Alireza Alinejad.pdf" class="hero-btn outline-btn" target="_blank" rel="noopener">
-          Download My CV
-        </a>
+        <a href="#about" class="hero-btn primary-btn explore-btn">Explore My Portfolio ↓</a>
+        <a href="assets/CV - Alireza Alinejad.pdf" class="hero-btn outline-btn cv-btn" target="_blank" rel="noopener">Download My CV</a>
       </div>
     </div>
   </section>
 
   <!-- About -->
   <section id="about" class="section reveal">
-    <h2 class="section-title">
-      <i class="fa-solid fa-user"></i>
-      <span>About Me</span>
-    </h2>
-
+    <h2 class="section-title"><i class="fa-solid fa-user"></i><span>About Me</span></h2>
     <div class="two-column">
       <div class="column">
         <h3>Objective</h3>
         <p id="objective-text" class="typewriter"
-           data-text="I believe that as AI models continue to evolve, we are closer than ever to achieving a human-like robotic brain. However, this brain needs an advanced, adaptable body to execute actions that genuinely ease human lives. I am driven to explore the creation of such robots, merging intelligent design with purposeful functionality to bridge the Moravec’s Paradox gap.">
-        </p>
+           data-text="I believe that as AI models continue to evolve, we are closer than ever to achieving a human-like robotic brain. However, this brain needs an advanced, adaptable body to execute actions that genuinely ease human lives. I am driven to explore the creation of such robots, merging intelligent design with purposeful functionality to bridge the Moravec’s Paradox gap."></p>
       </div>
       <div class="column">
         <h3>Areas of Interest</h3>
         <ul class="interest-list">
-          <li class="interest-item">
-            <i class="fa-solid fa-robot"></i>
-            <span>Robotics</span>
-          </li>
-          <li class="interest-item">
-            <i class="fa-solid fa-brain"></i>
-            <span>Machine Learning</span>
-          </li>
-          <li class="interest-item">
-            <i class="fa-solid fa-route"></i>
-            <span>Control &amp; Autonomy</span>
-          </li>
-          <li class="interest-item">
-            <i class="fa-solid fa-microchip"></i>
-            <span>Mechatronics</span>
-          </li>
-          <li class="interest-item">
-            <i class="fa-solid fa-layer-group"></i>
-            <span>Swarm Intelligence</span>
-          </li>
-          <li class="interest-item">
-            <i class="fa-solid fa-drafting-compass"></i>
-            <span>Mechanical Design</span>
-          </li>
+          <li class="interest-item"><i class="fa-solid fa-robot"></i><span>Robotics</span></li>
+          <li class="interest-item"><i class="fa-solid fa-brain"></i><span>Machine Learning</span></li>
+          <li class="interest-item"><i class="fa-solid fa-route"></i><span>Control &amp; Autonomy</span></li>
+          <li class="interest-item"><i class="fa-solid fa-microchip"></i><span>Mechatronics</span></li>
+          <li class="interest-item"><i class="fa-solid fa-layer-group"></i><span>Swarm Intelligence</span></li>
+          <li class="interest-item"><i class="fa-solid fa-drafting-compass"></i><span>Mechanical Design</span></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- Education & Academic Experience -->
+  <!-- Education -->
   <section id="education" class="section reveal">
-    <h2 class="section-title">
-      <i class="fa-solid fa-graduation-cap"></i>
-      <span>Education</span>
-    </h2>
-
+    <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i><span>Education</span></h2>
     <div class="two-column">
-      <!-- Education timeline -->
       <div class="column">
         <div class="education-timeline">
-          <!-- University -->
           <div class="edu-step">
             <div class="edu-icon-column">
-              <div class="edu-icon-circle">
-                <i class="fa-solid fa-graduation-cap"></i>
-              </div>
+              <div class="edu-icon-circle"><i class="fa-solid fa-graduation-cap"></i></div>
               <div class="edu-vertical-line"></div>
             </div>
-            <div class="edu-content">
-              <h3 class="edu-university">Sharif University of Technology (SUT)</h3>
-            </div>
+            <div class="edu-content"><h3 class="edu-university">Sharif University of Technology (SUT)</h3></div>
           </div>
-
-          <!-- Degree -->
           <div class="edu-step">
             <div class="edu-icon-column">
               <div class="edu-vertical-line edu-vertical-line-top"></div>
-              <div class="edu-icon-circle">
-                <i class="fa-solid fa-rocket"></i>
-              </div>
+              <div class="edu-icon-circle"><i class="fa-solid fa-rocket"></i></div>
               <div class="edu-vertical-line"></div>
             </div>
             <div class="edu-content">
-              <div class="edu-degree-row">
-                <span class="edu-degree">B.Sc. in Aerospace Engineering</span>
-              </div>
+              <div class="edu-degree-row"><span class="edu-degree">B.Sc. in Aerospace Engineering</span></div>
               <div class="edu-date">Sep 2021 – Present</div>
             </div>
           </div>
-
-          <!-- GPA -->
           <div class="edu-step">
             <div class="edu-icon-column">
               <div class="edu-vertical-line edu-vertical-line-top"></div>
-              <div class="edu-icon-circle">
-                <i class="fa-solid fa-chart-line"></i>
-              </div>
+              <div class="edu-icon-circle"><i class="fa-solid fa-chart-line"></i></div>
             </div>
-            <div class="edu-content">
-              <p class="edu-gpa">GPA: 3.67 (17.36 / 20)</p>
-            </div>
+            <div class="edu-content"><p class="edu-gpa">GPA: 3.67 (17.36 / 20)</p></div>
           </div>
         </div>
-
         <div class="edu-transcript">
-          <a
-            href="https://edu.sharif.edu/v/400106592/5D6DBDDAA61A40574952C07B85FB7D3E"
-            target="_blank"
-            rel="noopener"
-            class="transcript-btn"
-          >
-            View Official Transcript
-          </a>
+          <a href="https://edu.sharif.edu/v/400106592/5D6DBDDAA61A40574952C07B85FB7D3E" target="_blank" rel="noopener" class="transcript-btn">View Official Transcript</a>
         </div>
       </div>
-
-      <!-- Academic Experience -->
       <div class="column">
         <h3>Academic Experience</h3>
         <ul class="item-list with-icons">
           <li>
             <i class="fa-solid fa-chalkboard-user"></i>
             <div>
-              <div class="item-header">
-                <strong>Teaching Assistant – Aircraft Design</strong>
-              </div>
+              <div class="item-header"><strong>Teaching Assistant – Aircraft Design</strong></div>
               <div class="item-date">Sep 2025 – Present</div>
               <div class="item-subtitle">Sharif University of Technology (SUT)</div>
               <div class="item-meta">Instructor: Prof. Afshin Banazadeh</div>
@@ -233,9 +237,7 @@
           <li>
             <i class="fa-solid fa-chalkboard-user"></i>
             <div>
-              <div class="item-header">
-                <strong>Teaching Assistant – Numerical Methods</strong>
-              </div>
+              <div class="item-header"><strong>Teaching Assistant – Numerical Methods</strong></div>
               <div class="item-date">Sep 2025 – Present</div>
               <div class="item-subtitle">Sharif University of Technology (SUT)</div>
               <div class="item-meta">Instructor: Dr. Hossein Hashemi Nasab</div>
@@ -244,9 +246,7 @@
           <li>
             <i class="fa-solid fa-flask-vial"></i>
             <div>
-              <div class="item-header">
-                <strong>Teaching Assistant – Control Systems Lab</strong>
-              </div>
+              <div class="item-header"><strong>Teaching Assistant – Control Systems Lab</strong></div>
               <div class="item-date">Sep 2024 – Jan 2025</div>
               <div class="item-subtitle">Sharif University of Technology (SUT)</div>
               <div class="item-meta">Instructor: Prof. Alireza Sharifi</div>
@@ -255,9 +255,7 @@
           <li>
             <i class="fa-solid fa-diagram-project"></i>
             <div>
-              <div class="item-header">
-                <strong>Teaching Assistant – Engineering Dynamics</strong>
-              </div>
+              <div class="item-header"><strong>Teaching Assistant – Engineering Dynamics</strong></div>
               <div class="item-date">Sep 2023 – Jan 2024</div>
               <div class="item-subtitle">Sharif University of Technology (SUT)</div>
               <div class="item-meta">Instructor: Prof. Alireza Sharifi</div>
@@ -270,276 +268,158 @@
 
   <!-- Patent & Publications -->
   <section id="publications" class="section reveal">
-    <h2 class="section-title">
-      <i class="fa-solid fa-file-signature"></i>
-      <span>Patent &amp; Publications</span>
-    </h2>
+    <h2 class="section-title"><i class="fa-solid fa-file-signature"></i><span>Patent &amp; Publications</span></h2>
     <ul class="item-list">
       <li class="patent-item">
         <div class="patent-header">
           <span class="pub-label">[P.1]</span>
-          <span class="patent-title">
-            Design and Development of a Dragonfly-Inspired Flapping Mechanism
-          </span>
+          <span class="patent-title">Design and Development of a Dragonfly-Inspired Flapping Mechanism</span>
         </div>
         <div class="patent-details">
           A. Alinejad, T. Alikhani, S. H. Pourtakdoust, S. M. S. Mousavi (2025).<br>
           Iran Intellectual Property Office. Filed: November 2025 (Pending).
         </div>
       </li>
-      <li>
-        [Upcoming] Manuscripts in preparation in bio-inspired robotics, flight dynamics,
-        and autonomous systems.
-      </li>
     </ul>
   </section>
 
   <!-- Projects -->
   <section id="projects" class="section">
-    <h2 class="section-title">
-      <i class="fa-solid fa-diagram-project"></i>
-      <span>Projects</span>
-    </h2>
-
-    <!-- Featured research project (Uiverse.io by R1SH4BH81, adapted) -->
+    <h2 class="section-title"><i class="fa-solid fa-diagram-project"></i><span>Projects</span></h2>
+    
+    <!-- Featured Research Project (Fix: Text overflow solved) -->
     <article class="project-card featured-project reveal research-project">
       <div class="card">
-        <div
-          class="card-image"
-          style="background-image: url('images/dragonfly.png');"
-          role="img"
-          aria-label="Dragonfly-inspired flapping wing micro air vehicle"
-        ></div>
+        <div class="card-image" style="background-image: url('images/dragonfly.png');" role="img" aria-label="Dragonfly-inspired flapping wing micro air vehicle"></div>
         <div class="card-content">
           <div class="category">Research Highlight</div>
-          <div class="heading">
-            Dragonfly-Inspired Flapping Wing Micro Air Vehicle (FWMAV)
-            <div class="author">Aug 2023 – Sep 2025</div>
-          </div>
+          <div class="heading">Dragonfly-Inspired Flapping Wing Micro Air Vehicle (FWMAV)<div class="author">Aug 2023 – Sep 2025</div></div>
           <ul class="project-points">
             <li>Designed a biomimetic flapping mechanism through more than four iterative prototypes.</li>
             <li>Integrated Arduino-based control to improve maneuverability and efficiency.</li>
             <li>Validated performance via MATLAB simulations and physical tests with FDM prototypes.</li>
           </ul>
-          <p class="project-tools">
-            <strong>Tools:</strong> SolidWorks, FDM 3D printing, Arduino, MATLAB
-          </p>
-          <!-- This link can later point to a dedicated GitHub Pages sub-site (e.g., /Dragonfly/) -->
+          <p class="project-tools"><strong>Tools:</strong> SolidWorks, FDM 3D printing, Arduino, MATLAB</p>
           <a href="Dragonfly/" class="project-link">View Project Page</a>
         </div>
       </div>
     </article>
 
     <h3 class="projects-subtitle">Other Selected Projects</h3>
-
     <div class="projects-grid">
-      <!-- Inverted Rotary Pendulum -->
       <article class="project-card reveal">
         <div class="card">
-          <div
-            class="card-image"
-            style="background-image: url('images/RIP.png');"
-            role="img"
-            aria-label="Inverted rotary pendulum project"
-          ></div>
+          <div class="card-image" style="background-image: url('images/RIP.png');" role="img" aria-label="Inverted rotary pendulum"></div>
           <div class="category">Robotics &amp; Control</div>
-          <div class="heading">
-            Inverted Rotary Pendulum Control with Raspberry Pi
-            <div class="author">Sep 2025</div>
-          </div>
+          <div class="heading">Inverted Rotary Pendulum Control with Raspberry Pi<div class="author">Sep 2025</div></div>
           <ul class="project-points">
             <li>Configured a Raspberry Pi over SSH for real-time control experiments.</li>
             <li>Implemented a stabilization algorithm for an inverted rotary pendulum in C++.</li>
             <li>Evaluated closed-loop performance in a self-directed hardware project.</li>
           </ul>
-          <p class="project-tools">
-            <strong>Tools:</strong> Raspberry Pi, C++, SSH
-          </p>
+          <p class="project-tools"><strong>Tools:</strong> Raspberry Pi, C++, SSH</p>
           <a href="RotaryPendulum/" class="project-link">View Details</a>
         </div>
       </article>
-
-      <!-- ROS2 & NAO -->
+      
       <article class="project-card reveal">
         <div class="card">
-          <div
-            class="card-image"
-            style="background-image: url('images/TurtleBot3 Burger.png');"
-            role="img"
-            aria-label="ROS2 mobile robot navigation and NAO robot interaction"
-          ></div>
+          <div class="card-image" style="background-image: url('images/TurtleBot3 Burger.png');" role="img" aria-label="ROS2 mobile robot"></div>
           <div class="category">Robotics &amp; Control</div>
-          <div class="heading">
-            ROS2 Mobile Robot Navigation &amp; NAO Interaction
-            <div class="author">Feb 2025 – Jun 2025</div>
-          </div>
+          <div class="heading">ROS2 Mobile Robot Navigation &amp; NAO Interaction<div class="author">Feb 2025 – Jun 2025</div></div>
           <ul class="project-points">
             <li>Built a ROS2-based navigation stack for TurtleBot3 in Gazebo for mapping and exploration.</li>
             <li>Deployed autonomous navigation code on a real TurtleBot3 platform.</li>
             <li>Programmed NAO behaviors and interaction sequences using CHOREGRAPHE.</li>
           </ul>
-          <p class="project-tools">
-            <strong>Tools:</strong> ROS2, Gazebo, TurtleBot3, NAO, CHOREGRAPHE
-          </p>
+          <p class="project-tools"><strong>Tools:</strong> ROS2, Gazebo, TurtleBot3, NAO, CHOREGRAPHE</p>
           <a href="ROS2-Navigation/" class="project-link">View Details</a>
         </div>
       </article>
 
-      <!-- MCST Tracking -->
       <article class="project-card reveal">
         <div class="card">
-          <div
-            class="card-image"
-            style="background-image: url('images/MCST Tracking.png');"
-            role="img"
-            aria-label="Tracking algorithm project illustration"
-          ></div>
+          <div class="card-image" style="background-image: url('images/MCST Tracking.png');" role="img" aria-label="Tracking algorithm"></div>
           <div class="category">Machine Learning</div>
-          <div class="heading">
-            Reimplementation of MCST Tracking Algorithm
-            <div class="author">Feb 2025 – Jun 2025</div>
-          </div>
+          <div class="heading">Reimplementation of MCST Tracking Algorithm<div class="author">Feb 2025 – Jun 2025</div></div>
           <ul class="project-points">
             <li>Reproduced an adaptive trajectory tracking model for high-speed maneuvering targets.</li>
             <li>Integrated Bi-LSTM neural networks with a maneuver compensation unit.</li>
             <li>Implemented the pipeline using Python and PyTorch.</li>
           </ul>
-          <p class="project-tools">
-            <strong>Tools:</strong> Python, PyTorch, Bi-LSTM networks
-          </p>
+          <p class="project-tools"><strong>Tools:</strong> Python, PyTorch, Bi-LSTM networks</p>
         </div>
       </article>
 
-      <!-- Amphibious Aircraft -->
       <article class="project-card reveal">
         <div class="card">
-          <div
-            class="card-image"
-            style="background-image: url('images/Amphibious aircraft design.png');"
-            role="img"
-            aria-label="Amphibious aircraft design project"
-          ></div>
+          <div class="card-image" style="background-image: url('images/Amphibious aircraft design.png');" role="img" aria-label="Amphibious aircraft"></div>
           <div class="category">Aircraft Design</div>
-          <div class="heading">
-            Amphibious Aircraft Design (RAeS 2024–2025 RfP)
-            <div class="author">Sep 2024 – Jan 2025</div>
-          </div>
+          <div class="heading">Amphibious Aircraft Design (RAeS 2024–2025 RfP)<div class="author">Sep 2024 – Jan 2025</div></div>
           <ul class="project-points">
             <li>Developed a CS-23-compliant conceptual design for an amphibious aircraft.</li>
             <li>Performed performance and sensitivity analyses for mission requirements.</li>
             <li>Optimized aerodynamic configuration for operational versatility.</li>
           </ul>
-          <p class="project-tools">
-            <strong>Tools:</strong> MATLAB, SolidWorks, analytical modeling
-          </p>
+          <p class="project-tools"><strong>Tools:</strong> MATLAB, SolidWorks, analytical modeling</p>
         </div>
       </article>
 
-      <!-- Quadrotor Control -->
       <article class="project-card reveal">
         <div class="card">
-          <div
-            class="card-image"
-            style="background-image: url('images/Quadrotor Control System Simulation.png');"
-            role="img"
-            aria-label="Quadrotor control system simulation project"
-          ></div>
+          <div class="card-image" style="background-image: url('images/Quadrotor Control System Simulation.png');" role="img" aria-label="Quadrotor control"></div>
           <div class="category">Robotics &amp; Control</div>
-          <div class="heading">
-            Quadrotor Control System Simulation
-            <div class="author">Feb 2024 – Jun 2024</div>
-          </div>
+          <div class="heading">Quadrotor Control System Simulation<div class="author">Feb 2024 – Jun 2024</div></div>
           <ul class="project-points">
             <li>Modeled full 6-DOF quadrotor dynamics in MATLAB/Simulink.</li>
             <li>Designed PID controllers for stability and trajectory tracking.</li>
             <li>Compared simulation results with expected robotics precision standards.</li>
           </ul>
-          <p class="project-tools">
-            <strong>Tools:</strong> MATLAB, Simulink, SolidWorks, Simscape
-          </p>
-          <a href="https://github.com/Alireza-Alinejad-2002/Design-and-Simulation-of-a-Quadrotor-Controller-Using-MATLAB-Simulink"
-             target="_blank" rel="noopener" class="project-link">
-            View GitHub Repository
-          </a>
+          <p class="project-tools"><strong>Tools:</strong> MATLAB, Simulink, SolidWorks, Simscape</p>
+          <a href="https://github.com/Alireza-Alinejad-2002/Design-and-Simulation-of-a-Quadrotor-Controller-Using-MATLAB-Simulink" target="_blank" rel="noopener" class="project-link">View GitHub Repository</a>
         </div>
       </article>
 
-      <!-- Cessna 310 -->
       <article class="project-card reveal">
         <div class="card">
-          <div
-            class="card-image"
-            style="background-image: url('images/Cessna 310.png');"
-            role="img"
-            aria-label="Cessna 310 flight dynamics analysis"
-          ></div>
+          <div class="card-image" style="background-image: url('images/Cessna 310.png');" role="img" aria-label="Cessna 310"></div>
           <div class="category">Flight Dynamics</div>
-          <div class="heading">
-            Cessna 310 Flight Dynamics Analysis
-            <div class="author">Feb 2024 – Jun 2024</div>
-          </div>
+          <div class="heading">Cessna 310 Flight Dynamics Analysis<div class="author">Feb 2024 – Jun 2024</div></div>
           <ul class="project-points">
             <li>Extracted aerodynamic derivatives for the Cessna 310 using DATCOM.</li>
             <li>Analyzed longitudinal and lateral-directional stability modes in MATLAB.</li>
             <li>Explored implications for handling qualities and control strategies.</li>
           </ul>
-          <p class="project-tools">
-            <strong>Tools:</strong> DATCOM, MATLAB
-          </p>
+          <p class="project-tools"><strong>Tools:</strong> DATCOM, MATLAB</p>
         </div>
       </article>
 
-      <!-- Airline Performance Optimization -->
       <article class="project-card reveal">
         <div class="card">
-          <div
-            class="card-image"
-            style="background-image: url('images/Airline Performance.png');"
-            role="img"
-            aria-label="Airline performance optimization project"
-          ></div>
+          <div class="card-image" style="background-image: url('images/Airline Performance.png');" role="img" aria-label="Airline performance"></div>
           <div class="category">Data Analysis</div>
-          <div class="heading">
-            Airline Performance Optimization (Fare-Miner)
-            <div class="author">Sep 2023 – Jan 2024</div>
-          </div>
+          <div class="heading">Airline Performance Optimization (Fare-Miner)<div class="author">Sep 2023 – Jan 2024</div></div>
           <ul class="project-points">
             <li>Integrated multi-source airline fare data through automated web scraping.</li>
             <li>Performed data analysis to extract performance and pricing insights.</li>
             <li>Built a lightweight decision-support tool for route and fare strategies.</li>
           </ul>
-          <p class="project-tools">
-            <strong>Tools:</strong> Python, data analysis, web scraping
-          </p>
-          <a href="https://github.com/Alireza-Alinejad-2002/Fare-Miner"
-             target="_blank" rel="noopener" class="project-link">
-            View GitHub Repository
-          </a>
+          <p class="project-tools"><strong>Tools:</strong> Python, data analysis, web scraping</p>
+          <a href="https://github.com/Alireza-Alinejad-2002/Fare-Miner" target="_blank" rel="noopener" class="project-link">View GitHub Repository</a>
         </div>
       </article>
 
-      <!-- Solar-Powered Aircraft -->
       <article class="project-card reveal">
         <div class="card">
-          <div
-            class="card-image"
-            style="background-image: url('images/HAPS.png');"
-            role="img"
-            aria-label="Solar-powered aircraft evolution study"
-          ></div>
+          <div class="card-image" style="background-image: url('images/HAPS.png');" role="img" aria-label="Solar-powered aircraft"></div>
           <div class="category">Research Study</div>
-          <div class="heading">
-            Solar-Powered Aircraft Evolution Study
-            <div class="author">Feb 2022 – Jun 2022</div>
-          </div>
+          <div class="heading">Solar-Powered Aircraft Evolution Study<div class="author">Feb 2022 – Jun 2022</div></div>
           <ul class="project-points">
             <li>Reviewed the historical evolution of solar-powered aircraft designs.</li>
             <li>Analyzed concepts such as Sunrise I/II with respect to energy efficiency.</li>
             <li>Explored high-altitude pseudo-satellite (HAPS) applications for telecom.</li>
           </ul>
-          <p class="project-tools">
-            <strong>Tools:</strong> Literature review, conceptual analysis
-          </p>
+          <p class="project-tools"><strong>Tools:</strong> Literature review, conceptual analysis</p>
         </div>
       </article>
     </div>
@@ -547,11 +427,7 @@
 
   <!-- Skills -->
   <section id="skills" class="section reveal">
-    <h2 class="section-title">
-      <i class="fa-solid fa-screwdriver-wrench"></i>
-      <span>Skills</span>
-    </h2>
-
+    <h2 class="section-title"><i class="fa-solid fa-screwdriver-wrench"></i><span>Skills</span></h2>
     <div class="skills-grid">
       <div class="skill-card">
         <h3><i class="fa-solid fa-code"></i> Programming &amp; Data</h3>
@@ -564,7 +440,6 @@
           <li>Data analysis &amp; basic statistical modeling</li>
         </ul>
       </div>
-
       <div class="skill-card">
         <h3><i class="fa-solid fa-robot"></i> Robotics &amp; Control</h3>
         <ul class="skill-list">
@@ -574,7 +449,6 @@
           <li>Dynamic/system modeling &amp; state-space analysis</li>
         </ul>
       </div>
-
       <div class="skill-card">
         <h3><i class="fa-solid fa-gear"></i> Tools &amp; Simulation</h3>
         <ul class="skill-list">
@@ -584,7 +458,6 @@
           <li>Simulink Onramp certification</li>
         </ul>
       </div>
-
       <div class="skill-card">
         <h3><i class="fa-solid fa-comments"></i> Languages &amp; Soft Skills</h3>
         <ul class="skill-list">
@@ -600,35 +473,24 @@
 
   <!-- Honors & Awards -->
   <section id="honors" class="section reveal">
-    <h2 class="section-title">
-      <i class="fa-solid fa-trophy"></i>
-      <span>Honors &amp; Awards</span>
-    </h2>
+    <h2 class="section-title"><i class="fa-solid fa-trophy"></i><span>Honors &amp; Awards</span></h2>
     <ul class="item-list with-icons">
       <li>
         <i class="fa-solid fa-award"></i>
         <div class="honor-content">
-          <div class="honor-header">
-            <span class="honor-title">Top Rank in Aerospace Engineering</span>
-          </div>
+          <div class="honor-header"><span class="honor-title">Top Rank in Aerospace Engineering</span></div>
           <div class="honor-date">Sep 2021 – Present</div>
           <div class="honor-org">Sharif University of Technology (SUT)</div>
-          <ul class="detail-list">
-            <li>Studying Aerospace Engineering at the top-ranked engineering university in Iran.</li>
-          </ul>
+          <ul class="detail-list"><li>Studying Aerospace Engineering at the top-ranked engineering university in Iran.</li></ul>
         </div>
       </li>
       <li>
         <i class="fa-solid fa-medal"></i>
         <div class="honor-content">
-          <div class="honor-header">
-            <span class="honor-title">Elite National Rank – Mathematics &amp; Physics</span>
-          </div>
+          <div class="honor-header"><span class="honor-title">Elite National Rank – Mathematics &amp; Physics</span></div>
           <div class="honor-date">Jul 2021</div>
           <div class="honor-org">Iranian Nationwide University Entrance Exam (Konkur)</div>
-          <ul class="detail-list">
-            <li>Ranked among the top 0.3% of participants nationwide.</li>
-          </ul>
+          <ul class="detail-list"><li>Ranked among the top 0.3% of participants nationwide.</li></ul>
         </div>
       </li>
     </ul>
@@ -636,21 +498,14 @@
 
   <!-- Professional Memberships -->
   <section id="memberships" class="section reveal">
-    <h2 class="section-title">
-      <i class="fa-solid fa-users"></i>
-      <span>Professional Memberships</span>
-    </h2>
+    <h2 class="section-title"><i class="fa-solid fa-users"></i><span>Professional Memberships</span></h2>
     <ul class="item-list with-icons">
       <li>
         <i class="fa-solid fa-people-group"></i>
         <div class="membership-content">
-          <div class="membership-header">
-            <span class="membership-title">Head of Welfare Committee</span>
-          </div>
+          <div class="membership-header"><span class="membership-title">Head of Welfare Committee</span></div>
           <div class="membership-date">May 2023 – Sep 2024</div>
-          <div class="membership-org">
-            Aerospace Engineering Department’s Student Council, SUT
-          </div>
+          <div class="membership-org">Aerospace Engineering Department’s Student Council, SUT</div>
           <ul class="detail-list">
             <li>Led the Welfare Committee overseeing student well-being initiatives.</li>
             <li>Developed and implemented programs to improve student support and resources.</li>
@@ -661,29 +516,19 @@
       <li>
         <i class="fa-solid fa-leaf"></i>
         <div class="membership-content">
-          <div class="membership-header">
-            <span class="membership-title">Environmental Cooperation Member</span>
-          </div>
+          <div class="membership-header"><span class="membership-title">Environmental Cooperation Member</span></div>
           <div class="membership-date">Apr 2023 – Dec 2023</div>
           <div class="membership-org">Association of Environmentalists, SUT</div>
-          <ul class="detail-list">
-            <li>Participated in tree-planting, paper waste recycling, and awareness programs.</li>
-          </ul>
+          <ul class="detail-list"><li>Participated in tree-planting, paper waste recycling, and awareness programs.</li></ul>
         </div>
       </li>
       <li>
         <i class="fa-solid fa-newspaper"></i>
         <div class="membership-content">
-          <div class="membership-header">
-            <span class="membership-title">Technical Editor</span>
-          </div>
+          <div class="membership-header"><span class="membership-title">Technical Editor</span></div>
           <div class="membership-date">Oct 2022 – Apr 2023</div>
-          <div class="membership-org">
-            Aerospace-based trade magazine, OWJ Publications, SUT
-          </div>
-          <ul class="detail-list">
-            <li>Edited magazine articles for grammatical clarity and scientific accuracy.</li>
-          </ul>
+          <div class="membership-org">Aerospace-based trade magazine, OWJ Publications, SUT</div>
+          <ul class="detail-list"><li>Edited magazine articles for grammatical clarity and scientific accuracy.</li></ul>
         </div>
       </li>
     </ul>
@@ -691,209 +536,96 @@
 
   <!-- Certifications -->
   <section id="certifications" class="section reveal">
-    <h2 class="section-title">
-      <i class="fa-solid fa-certificate"></i>
-      <span>Certifications</span>
-    </h2>
-
+    <h2 class="section-title"><i class="fa-solid fa-certificate"></i><span>Certifications</span></h2>
     <div class="certs-grid">
       <div class="cert-card">
         <div class="card">
-          <div
-            class="card-image"
-            style="background-image: url('images/certifications/Deep Learning Fundamentals Unlocking the Power of Ai.png');"
-            role="img"
-            aria-label="Deep Learning Fundamentals: Unlocking the Power of AI certificate"
-          ></div>
+          <div class="card-image" style="background-image: url('images/certifications/Deep Learning Fundamentals Unlocking the Power of Ai.png');" role="img" aria-label="Deep Learning Fundamentals"></div>
           <div class="category">Certification</div>
-          <div class="heading">
-            Deep Learning Fundamentals: Unlocking the Power of AI
-            <div class="author">Aug 2025</div>
-          </div>
+          <div class="heading">Deep Learning Fundamentals: Unlocking the Power of AI<div class="author">Aug 2025</div></div>
         </div>
       </div>
-
       <div class="cert-card">
         <div class="card">
-          <div
-            class="card-image"
-            style="background-image: url('images/certifications/Artificial Neural Network and Machine Learning using MATLAB_Certificate.png');"
-            role="img"
-            aria-label="Artificial Neural Network and Machine Learning using MATLAB certificate"
-          ></div>
+          <div class="card-image" style="background-image: url('images/certifications/Artificial Neural Network and Machine Learning using MATLAB_Certificate.png');" role="img" aria-label="MATLAB Neural Networks"></div>
           <div class="category">Certification</div>
-          <div class="heading">
-            Artificial Neural Network and Machine Learning using MATLAB
-            <div class="author">Jul 2024</div>
-          </div>
+          <div class="heading">Artificial Neural Network and Machine Learning using MATLAB<div class="author">Jul 2024</div></div>
         </div>
       </div>
-
       <div class="cert-card">
         <div class="card">
-          <div
-            class="card-image"
-            style="background-image: url('images/certifications/Simulink_Onramp.png');"
-            role="img"
-            aria-label="Simulink Onramp certificate"
-          ></div>
+          <div class="card-image" style="background-image: url('images/certifications/Simulink_Onramp.png');" role="img" aria-label="Simulink Onramp"></div>
           <div class="category">Certification</div>
-          <div class="heading">
-            Simulink Onramp
-            <div class="author">Mar 2024</div>
-          </div>
+          <div class="heading">Simulink Onramp<div class="author">Mar 2024</div></div>
         </div>
       </div>
-
       <div class="cert-card">
         <div class="card">
-          <div
-            class="card-image"
-            style="background-image: url('images/certifications/Matlab_Onramp.png');"
-            role="img"
-            aria-label="MATLAB Onramp certificate"
-          ></div>
+          <div class="card-image" style="background-image: url('images/certifications/Matlab_Onramp.png');" role="img" aria-label="MATLAB Onramp"></div>
           <div class="category">Certification</div>
-          <div class="heading">
-            MATLAB Onramp
-            <div class="author">Nov 2022</div>
-          </div>
+          <div class="heading">MATLAB Onramp<div class="author">Nov 2022</div></div>
         </div>
       </div>
     </div>
-    <!-- Note: adjust the image filenames above to match the actual files in images/certifications/ -->
   </section>
 
   <!-- Contact -->
   <section id="contact" class="section reveal">
-    <h2 class="section-title">
-      <i class="fa-solid fa-paper-plane"></i>
-      <span>Get In Touch</span>
-    </h2>
-
+    <h2 class="section-title"><i class="fa-solid fa-paper-plane"></i><span>Get In Touch</span></h2>
     <div class="contact-grid">
-      <!-- Column 1: Contact details -->
       <div class="contact-col">
         <h3 class="contact-heading">Contact Me</h3>
-        <p class="contact-subtitle">
-          Feel free to reach out for collaborations or inquiries.
-        </p>
-
-        <!-- New wrapper so items can be distributed vertically -->
+        <p class="contact-subtitle">Feel free to reach out for collaborations or inquiries.</p>
         <div class="contact-list">
-          <div class="contact-item">
-            <i class="fa-solid fa-envelope"></i>
-            <a href="mailto:Alireza.Alinejad.g.f.a@gmail.com">
-              Alireza.Alinejad.g.f.a@gmail.com
-            </a>
-          </div>
-          <div class="contact-item">
-            <i class="fa-solid fa-phone"></i>
-            <a href="tel:+989198020208">+98 919 8020208</a>
-          </div>
-          <div class="contact-item">
-            <i class="fa-brands fa-linkedin"></i>
-            <a href="https://www.linkedin.com/in/2002-alireza-alinejad"
-              target="_blank" rel="noopener">
-              linkedin.com/in/2002-alireza-alinejad
-            </a>
-          </div>
-          <div class="contact-item">
-            <i class="fa-brands fa-github"></i>
-            <a href="https://github.com/Alireza-Alinejad-2002"
-              target="_blank" rel="noopener">
-              github.com/Alireza-Alinejad-2002
-            </a>
-          </div>
-          <div class="contact-item">
-            <i class="fa-solid fa-location-dot"></i>
-            <span>Tehran, Iran</span>
+          <div class="contact-item"><i class="fa-solid fa-envelope"></i><a href="mailto:Alireza.Alinejad.g.f.a@gmail.com">Alireza.Alinejad.g.f.a@gmail.com</a></div>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i><a href="tel:+989198020208">+98 919 8020208</a></div>
+          <div class="contact-item"><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/in/2002-alireza-alinejad" target="_blank" rel="noopener">linkedin.com/in/2002-alireza-alinejad</a></div>
+          <div class="contact-item"><i class="fa-brands fa-github"></i><a href="https://github.com/Alireza-Alinejad-2002" target="_blank" rel="noopener">github.com/Alireza-Alinejad-2002</a></div>
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>Tehran, Iran</span></div>
+        </div>
+        <div class="newtons-cradle-container">
+          <div class="newtons-cradle">
+            <div class="newtons-cradle__dot"></div>
+            <div class="newtons-cradle__dot"></div>
+            <div class="newtons-cradle__dot"></div>
+            <div class="newtons-cradle__dot"></div>
           </div>
         </div>
       </div>
-
-      <!-- Column 2: References -->
       <div class="contact-col">
         <h3 class="contact-heading">References</h3>
-        <p class="contact-subtitle">
-          Academic and professional references.
-        </p>
-
+        <p class="contact-subtitle">Academic and professional references.</p>
         <div class="reference">
           <div class="reference-name">Seyed Hossein Pourtakdoust</div>
-          <div class="reference-role">
-            Professor, Faculty of Aerospace Engineering Department
-          </div>
-          <div class="reference-affiliation">
-            Sharif University of Technology, Tehran, Iran
-          </div>
+          <div class="reference-role">Professor, Faculty of Aerospace Engineering Department</div>
+          <div class="reference-affiliation">Sharif University of Technology, Tehran, Iran</div>
           <div class="reference-contact">
-            <div>
-              Email:
-              <a href="mailto:pourtak@sharif.edu">pourtak@sharif.edu</a>
-            </div>
-            <div>
-              Phone:
-              <a href="tel:+982166168163">+98-21-66168163</a>
-            </div>
+            <div>Email: <a href="mailto:pourtak@sharif.edu">pourtak@sharif.edu</a></div>
+            <div>Phone: <a href="tel:+982166168163">+98-21-66168163</a></div>
           </div>
-          <div class="reference-relationship">
-            Relationship: B.Sc. Team Project Supervisor, Course Instructor
-          </div>
+          <div class="reference-relationship">Relationship: B.Sc. Team Project Supervisor, Course Instructor</div>
         </div>
-
         <div class="reference">
           <div class="reference-name">Afshin Banazadeh</div>
-          <div class="reference-role">
-            Professor, Faculty of Aerospace Engineering Department
-          </div>
-          <div class="reference-affiliation">
-            Sharif University of Technology, Tehran, Iran
-          </div>
+          <div class="reference-role">Professor, Faculty of Aerospace Engineering Department</div>
+          <div class="reference-affiliation">Sharif University of Technology, Tehran, Iran</div>
           <div class="reference-contact">
-            <div>
-              Email:
-              <a href="mailto:banazadeh@sharif.edu">banazadeh@sharif.edu</a>
-            </div>
-            <div>
-              Phone:
-              <a href="tel:+982166168108">+98-21-66168108</a>
-            </div>
+            <div>Email: <a href="mailto:banazadeh@sharif.edu">banazadeh@sharif.edu</a></div>
+            <div>Phone: <a href="tel:+982166168108">+98-21-66168108</a></div>
           </div>
-          <div class="reference-relationship">
-            Relationship: Teaching Assistant, Aircraft Design Team Project Supervisor, Course Instructor
-          </div>
+          <div class="reference-relationship">Relationship: Teaching Assistant, Aircraft Design Team Project Supervisor, Course Instructor</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>© 2025 Alireza Alinejad. All rights reserved.</p>
     <div class="footer-links">
-      <a href="mailto:Alireza.Alinejad.g.f.a@gmail.com" aria-label="Email">
-        <i class="fa-solid fa-envelope"></i>
-      </a>
-      <a
-        href="https://www.linkedin.com/in/2002-alireza-alinejad"
-        target="_blank"
-        rel="noopener"
-        aria-label="LinkedIn"
-      >
-        <i class="fa-brands fa-linkedin"></i>
-      </a>
-      <a
-        href="https://github.com/Alireza-Alinejad-2002"
-        target="_blank"
-        rel="noopener"
-        aria-label="GitHub"
-      >
-        <i class="fa-brands fa-github"></i>
-      </a>
-      <a href="https://alireza-alinejad-2002.github.io/" aria-label="Website">
-        <i class="fa-solid fa-globe"></i>
-      </a>
+      <a href="mailto:Alireza.Alinejad.g.f.a@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/2002-alireza-alinejad" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://github.com/Alireza-Alinejad-2002" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+      <a href="https://alireza-alinejad-2002.github.io/" aria-label="Website"><i class="fa-solid fa-globe"></i></a>
     </div>
   </footer>
 
