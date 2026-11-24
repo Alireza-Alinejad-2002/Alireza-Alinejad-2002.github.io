@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" font-family="IBM Plex Mono, ui-monospace, monospace">
+  <rect width="1200" height="750" fill="#f6f5f1"/>
+  <g stroke="#121212" stroke-opacity=".06">
+    <path d="M0 50H1200M0 100H1200M0 150H1200M0 200H1200M0 250H1200M0 300H1200M0 350H1200M0 400H1200M0 450H1200M0 500H1200M0 550H1200M0 600H1200M0 650H1200M0 700H1200"/>
+    <path d="M50 0V750M100 0V750M150 0V750M200 0V750M250 0V750M300 0V750M350 0V750M400 0V750M450 0V750M500 0V750M550 0V750M600 0V750M650 0V750M700 0V750M750 0V750M800 0V750M850 0V750M900 0V750M950 0V750M1000 0V750M1050 0V750M1100 0V750M1150 0V750"/>
+  </g>
+  <g fill="none" stroke="#121212" stroke-width="1.5">
+    <rect x="60" y="300" width="170" height="150"/>
+    <rect x="280" y="300" width="190" height="150" stroke="#ff4f00" stroke-width="2"/>
+    <rect x="520" y="250" width="190" height="250"/>
+    <rect x="760" y="300" width="160" height="150"/>
+    <rect x="970" y="210" width="170" height="130"/>
+    <rect x="970" y="410" width="170" height="130"/>
+    <path d="M230 375H280M470 375H520M710 375H760M920 375H945V275H970M945 375V475H970"/>
+    <path d="M545 300h140v50h-140zM545 400h140v50h-140z"/>
+  </g>
+  <g fill="#121212" font-size="21">
+    <text x="80" y="360">Sampled</text>
+    <text x="80" y="388">states</text>
+    <text x="300" y="360">Maneuver</text>
+    <text x="300" y="388">compensation</text>
+    <text x="545" y="290">Bi-LSTM × 2</text>
+    <text x="780" y="360">Dual</text>
+    <text x="780" y="388">attention</text>
+    <text x="990" y="270">Predictor</text>
+    <text x="990" y="470">Updater</text>
+  </g>
+  <g fill="#5e5e5a" font-size="15">
+    <text x="80" y="418">reparameterized</text>
+    <text x="300" y="418">FFT · gated · IFFT</text>
+    <text x="560" y="330">64 units</text>
+    <text x="560" y="430">64 units</text>
+    <text x="780" y="418">time · samples</text>
+    <text x="990" y="300">mean · log σ²</text>
+    <text x="990" y="500">learned gain</text>
+  </g>
+</svg>

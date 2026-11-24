@@ -1,0 +1,269 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "daisyui" {
+  themes: false;
+}
+
+/* ---------- Themes (daisyUI 5) ---------- */
+@plugin "daisyui/theme" {
+  name: "blueprint";
+  default: true;
+  color-scheme: light;
+  --color-base-100: #f6f5f1;
+  --color-base-200: #eeece6;
+  --color-base-300: #dad8d1;
+  --color-base-content: #121212;
+  --color-primary: #ff4f00;
+  --color-primary-content: #121212;
+  --color-secondary: #121212;
+  --color-secondary-content: #f6f5f1;
+  --color-accent: #ff4f00;
+  --color-accent-content: #121212;
+  --color-neutral: #121212;
+  --color-neutral-content: #f6f5f1;
+  --color-info: #1d4ed8;
+  --color-info-content: #f6f5f1;
+  --color-success: #15803d;
+  --color-success-content: #f6f5f1;
+  --color-warning: #b45309;
+  --color-warning-content: #f6f5f1;
+  --color-error: #b91c1c;
+  --color-error-content: #f6f5f1;
+  --radius-selector: 0rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "blueprint-dark";
+  prefersdark: true;
+  color-scheme: dark;
+  --color-base-100: #0e0f10;
+  --color-base-200: #151718;
+  --color-base-300: #26282a;
+  --color-base-content: #edede9;
+  --color-primary: #ff6a1f;
+  --color-primary-content: #0e0f10;
+  --color-secondary: #edede9;
+  --color-secondary-content: #0e0f10;
+  --color-accent: #ff6a1f;
+  --color-accent-content: #0e0f10;
+  --color-neutral: #edede9;
+  --color-neutral-content: #0e0f10;
+  --color-info: #93c5fd;
+  --color-info-content: #0e0f10;
+  --color-success: #86efac;
+  --color-success-content: #0e0f10;
+  --color-warning: #fcd34d;
+  --color-warning-content: #0e0f10;
+  --color-error: #fca5a5;
+  --color-error-content: #0e0f10;
+  --radius-selector: 0rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@custom-variant dark (&:where([data-theme="blueprint-dark"], [data-theme="blueprint-dark"] *));
+
+/* ---------- Tokens ---------- */
+@theme {
+  --font-sans: var(--font-plex-sans), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --color-paper: var(--color-base-100);
+  --color-ink: var(--color-base-content);
+  --color-muted: var(--muted);
+  --color-hairline: var(--color-base-300);
+  --color-signal: var(--color-primary);
+  --color-signal-text: var(--accent-text);
+
+  --text-display: clamp(2.75rem, 1.6rem + 5.2vw, 6rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.035em;
+  --text-title: clamp(1.75rem, 1.3rem + 1.9vw, 2.75rem);
+  --text-title--line-height: 1.08;
+  --text-title--letter-spacing: -0.025em;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root,
+[data-theme="blueprint"] {
+  --muted: #5e5e5a;
+  --accent-text: #c23b00;
+  --grid-line: rgb(18 18 18 / 0.06);
+}
+[data-theme="blueprint-dark"] {
+  --muted: #a3a39d;
+  --accent-text: #ff7a33;
+  --grid-line: rgb(237 237 233 / 0.05);
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    overflow-wrap: break-word;
+    font-feature-settings: "ss02", "kern";
+  }
+  ::selection {
+    background: var(--color-primary);
+    color: #121212;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+  a {
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+    font-weight: 500;
+  }
+  p { text-wrap: pretty; }
+  hr { border-color: var(--color-base-300); }
+  html { scrollbar-color: var(--color-base-300) transparent; }
+}
+
+/* ---------- Components ---------- */
+@layer components {
+  .wrap {
+    @apply mx-auto w-full max-w-[75rem] px-4 sm:px-6 lg:px-8;
+  }
+  .rule {
+    @apply border-t border-hairline;
+  }
+  .meta {
+    @apply font-mono text-[0.8125rem] leading-snug text-muted tabular-nums;
+    letter-spacing: 0.01em;
+  }
+  /* link with an underline that draws in on hover */
+  .link-draw {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    text-decoration: none;
+    transition: background-size 0.35s var(--ease-out-expo);
+  }
+  .link-draw:hover,
+  .link-draw:focus-visible {
+    background-size: 100% 1px;
+  }
+  .link-quiet {
+    @apply underline decoration-hairline hover:decoration-signal;
+    transition: text-decoration-color 0.2s;
+  }
+  .frame {
+    @apply relative overflow-hidden bg-base-200;
+  }
+  .frame img {
+    transition: transform 0.6s var(--ease-out-expo);
+  }
+  a:hover .frame img,
+  a:focus-visible .frame img {
+    transform: scale(1.025);
+  }
+  /* blueprint grid backdrop */
+  .grid-paper {
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .btn-ink {
+    @apply inline-flex items-center gap-2 border border-ink bg-ink px-4 py-2.5 text-[0.9375rem] font-medium text-paper;
+    transition: transform 0.15s, background-color 0.2s, color 0.2s;
+  }
+  .btn-ink:hover { @apply bg-transparent text-ink; }
+  .btn-ink:active { transform: translateY(1px); }
+  .btn-line {
+    @apply inline-flex items-center gap-2 border border-hairline px-4 py-2.5 text-[0.9375rem] font-medium;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .btn-line:hover { @apply border-ink; }
+  .btn-line:active { transform: translateY(1px); }
+}
+
+/* ---------- Motion (only when JS is on; content is visible without it) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+  }
+  html.js [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+  html.js .lineart-draw path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw 2.6s var(--ease-out-expo) 0.2s forwards;
+  }
+  html.js .lineart-draw path.la-thick {
+    animation-delay: 0.6s;
+    animation-duration: 2.2s;
+  }
+  @keyframes draw {
+    to { stroke-dashoffset: 0; }
+  }
+}
+
+/* ---------- Long-form (case studies) ---------- */
+.prose-blueprint {
+  --tw-prose-body: var(--color-base-content);
+  --tw-prose-headings: var(--color-base-content);
+  --tw-prose-links: var(--color-base-content);
+  --tw-prose-bold: var(--color-base-content);
+  --tw-prose-bullets: var(--color-base-300);
+  --tw-prose-counters: var(--muted);
+  --tw-prose-hr: var(--color-base-300);
+  --tw-prose-quotes: var(--color-base-content);
+  --tw-prose-quote-borders: var(--color-primary);
+  --tw-prose-captions: var(--muted);
+  --tw-prose-code: var(--color-base-content);
+  --tw-prose-th-borders: var(--color-base-300);
+  --tw-prose-td-borders: var(--color-base-300);
+}
+.prose-blueprint :where(a):not(:where(.not-prose *)) {
+  text-decoration-color: var(--color-base-300);
+}
+.prose-blueprint :where(a):hover {
+  text-decoration-color: var(--color-primary);
+}
+.prose-blueprint :where(h2):not(:where(.not-prose *)) {
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-top: 2.5em;
+}
+.prose-blueprint :where(h3):not(:where(.not-prose *)) {
+  font-weight: 500;
+}
+.prose-blueprint :where(table):not(:where(.not-prose *)) {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9375em;
+}

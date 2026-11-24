@@ -1,0 +1,76 @@
+---
+title: AeroNEX, a hybrid-electric STOL air taxi
+short: AeroNEX hybrid-electric DEP air taxi
+summary: A six-seat air taxi with eight distributed electric motors blowing the wing for short take-off and two wingtip piston engines for cruise. It was designed to CS-23 from sizing through stability, cockpit, fuselage and wing structure.
+order: 2
+period: Feb 2025 – Jun 2025
+context: Aircraft Design 2 · Sharif University of Technology
+role: DEP propulsion, stability & control, cockpit and nose design
+team: A. Saeedi, A. Alipanah, A. Alinejad, R. Pourjafarian, M. Sadeghi, M. Amiri Bostanabad · supervisor Prof. Afshin Banazadeh
+tools: [OpenVSP, MATLAB, AAA, ANSYS Fluent, ABAQUS, SOLIDWORKS, CS-23]
+cover: ../../assets/projects/aeronex-dep-air-taxi/iso-cutaway.jpg
+coverAlt: CAD view of the AeroNEX air taxi with eight propellers along the wing and a cut-away cabin showing the pilot and passengers.
+specs:
+  - { label: "Propulsors", value: "8 DEP motors + 2 cruise engines" }
+  - { label: "Wing", value: "16.98 m² · span 13.03 m · AR 10" }
+  - { label: "Airfoil", value: "Selig S1223" }
+  - { label: "(L/D) max", value: "16.86" }
+  - { label: "Cruise", value: "8,000 ft" }
+model:
+  src: /models/aeronex.glb
+  poster: ../../assets/projects/aeronex-dep-air-taxi/cad-iso.png
+  alt: Interactive 3D model of the AeroNEX air taxi with eight DEP propellers on the wing and two wingtip cruise propellers.
+  caption: AeroNEX CAD assembly, simplified for the web.
+---
+import Figure from '../../components/Figure.astro';
+import Sitl from '../partials/sitl.mdx';
+import cadHero from '../../assets/projects/aeronex-dep-air-taxi/cad-hero.png';
+import top from '../../assets/projects/aeronex-dep-air-taxi/top.jpg';
+import side from '../../assets/projects/aeronex-dep-air-taxi/side.jpg';
+import nose from '../../assets/projects/aeronex-dep-air-taxi/nose-gear.jpg';
+import cabin from '../../assets/projects/aeronex-dep-air-taxi/cabin.jpg';
+import cp from '../../assets/projects/aeronex-dep-air-taxi/openvsp-cp.jpg';
+import vsp from '../../assets/projects/aeronex-dep-air-taxi/openvsp-model.jpg';
+import wingStructure from '../../assets/projects/aeronex-dep-air-taxi/wing-structure.jpg';
+
+## Brief
+
+The course RFP asked for a hybrid-electric short take-off and landing air taxi. It had to carry a pilot and 4–6 passengers, take off and land over a 50 ft obstacle within 300 ft, cruise at 150 kt or more (180 kt targeted), and use distributed electric propulsion with at least eight motors. Certification basis: FAR / CS-23. The six-person team carried the design through flap and propulsion sizing, stability, drag polar, cockpit, fuselage and systems, and the wing layout.
+
+<div class="not-prose grid gap-4 sm:grid-cols-2">
+  <Figure src={top} alt="Top view of the AeroNEX CAD model with the propellers along the wing leading edge." caption="Top view: eight DEP propellers along the leading edge." />
+  <Figure src={side} alt="Side view of the AeroNEX CAD model showing the fuselage, conventional tail and tricycle gear." caption="Side view." />
+</div>
+
+## Distributed electric propulsion
+
+My first part was propulsion. Eight electric motors in the MAGiDRIVE-20 class (16 kW continuous, 20 kW peak) sit along the wing leading edge with 0.9 m five-blade propellers. They are used only for take-off and landing: their slipstream blows the wing, so the required C<sub>L,max</sub> is reached without flaps. Two wingtip Continental O-470 piston engines (225 hp each) with three-blade constant-speed propellers handle cruise. A growth version replaces them with EMRAX 268 motors fed by a turbo-generator, giving an all-electric configuration.
+
+The S1223 high-lift airfoil came out of a weighted decision matrix that also scored NASA MS(1)-0317, NASA LS(1)-0417, FX 63-137, NACA 23018 and NACA 4412.
+
+<Figure src={cadHero} alt="SOLIDWORKS view of AeroNEX: eight five-blade DEP propellers along the wing leading edge and a three-blade cruise propeller at each wingtip." caption="CAD assembly: eight DEP units on the leading edge, cruise engines at the wingtips." />
+
+<Figure src={vsp} alt="OpenVSP model of AeroNEX with the eight DEP propellers modeled as actuator disks." caption="OpenVSP model with the DEP actuator disks." />
+
+## Stability and control
+
+The X-plot gave a 30 ft² horizontal tail for a static margin of about 15%, and a 31 ft² vertical tail with C<sub>nβ</sub> = 0.26 rad⁻¹. I cross-checked the derivatives in OpenVSP and against NASA's X-57 Maxwell. With one engine inoperative, the rudder deflection needed to trim is **9.36°**, well inside the 25° limit. The battery was moved from under the nose to beneath the wing to keep the CG range tight.
+
+<Figure src={cp} alt="OpenVSP pressure-coefficient plot with streamlines over the AeroNEX wing and tail." caption="OpenVSP: pressure coefficient and wake over the wing and tail." />
+
+## Cockpit, nose and cabin
+
+I also designed the cockpit and nose: a Garmin GWX 75 weather radar, an SR22-class instrument panel, a center stick in place of a yoke, a forward-retracting electromechanical nose gear, and pilot field-of-view checks. The cabin seats six in a 1 + 1 layout, with a 361 kg Li-ion battery under the floor.
+
+<div class="not-prose grid gap-4 sm:grid-cols-2">
+  <Figure src={nose} alt="Side cut-away of the nose with the pilot seated and the nose landing gear extended." caption="Nose landing gear and pilot position." />
+  <Figure src={cabin} alt="Cut-away of the AeroNEX cabin with pilot and passenger seats and the landing gear." caption="Cabin and landing gear." />
+</div>
+
+## Drag and wing structure
+
+The drag polar is C<sub>D</sub> = 0.0221 + 0.03745 C<sub>L</sub>² clean, which gives (L/D)<sub>max</sub> = 16.86. The wing box uses two spars, ten stringers and Al 2024-T3 ribs and skin. It was checked in ABAQUS, and isolated-wing CFD in ANSYS Fluent (k-ω SST) gave L/D ≈ 17.
+
+<Figure src={wingStructure} alt="CAD of the wing structure showing ribs, two spars and stringers." caption="Wing structure: spars, ribs and stringers." />
+
+<Sitl />

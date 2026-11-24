@@ -1,0 +1,39 @@
+name: Build and deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["main", "redesign-2026"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Build with Astro
+        uses: withastro/action@v6
+      - name: Check internal links
+        run: npx --yes linkinator ./dist --recurse --skip "(linkedin\.com|github\.com|edu\.sharif\.edu|doi\.org|alireza-alinejad-2002\.github\.io)"
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

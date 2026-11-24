@@ -1,0 +1,29 @@
+---
+title: PRC Data Challenge 2025, fuel-burn estimation
+short: PRC Data Challenge 2025
+summary: Estimating how much fuel commercial flights burn over each segment of their trajectory, from open flight data, aircraft performance databases and reanalysis weather.
+order: 4
+period: "2025"
+context: EUROCONTROL Performance Review Commission (PRC) Data Challenge 2025
+role: Data pipeline and feature engineering
+tools: [Python, pandas, PyArrow, OpenAP, Open-Meteo / ERA5, matplotlib]
+cover: ../../assets/projects/prc-data-challenge-2025/pipeline.svg
+coverAlt: "Diagram of the pipeline: flight trajectories, aircraft specifications and airport weather feed a per-interval feature table that predicts fuel burn in kilograms."
+coverFit: contain
+specs:
+  - { label: "Target", value: "fuel_kg per flight interval" }
+  - { label: "Inputs", value: "Trajectories · aircraft · weather" }
+---
+## The challenge
+
+The 2025 PRC Data Challenge asked participants to estimate the fuel burned by commercial flights over given time intervals. The training data are intervals labeled with `fuel_kg`, each tied to a flight with its aircraft type, origin and destination, and a trajectory sampled in altitude, ground speed, vertical rate and track.
+
+## What I built
+
+A reproducible feature pipeline, about 2,600 lines of Python. It turns raw challenge data into one feature row per interval:
+
+- **Trajectory features.** For each interval: duration, number of samples, mean and change in altitude, mean ground speed and vertical rate, distance flown, and mean heading change.
+- **Aircraft specifications.** For each ICAO type code, a merged table of mass limits (MTOW, MLW, OEW), speed limits, ceiling, wing geometry, drag polar terms, engine bypass ratio, thrust and cruise SFC. The values come from OpenAP. Gaps are filled from the FAST AEROBASE database, mapped to ICAO codes by rule (for example A320neo → A20N, 777-300ER → B77W).
+- **Weather.** Hourly ERA5 reanalysis from the Open-Meteo archive for every airport in the dataset. It's attached at origin, destination and an estimated mid-route point (great-circle midpoint, then nearest airport), with pressure at flight altitude from the barometric formula. Downloads are resumable, with retry and backoff.
+
+Exploratory scripts check the target distribution, interval durations and fuel–duration relationships before modeling.

@@ -1,0 +1,88 @@
+---
+title: Dragonfly-inspired flapping-wing micro air vehicle
+short: Dragonfly-inspired flapping mechanism
+summary: One brushless motor drives four wings through a three-stage gear train. The design took four architectures and six revisions of the final one, and became my B.Sc. thesis and a patent application.
+order: 1
+period: Aug 2023 – Sep 2025
+context: B.Sc. thesis · Smart Systems Research Lab, Sharif University of Technology
+role: Mechanism design, CAD, prototyping and testing (with Taha Alikhani)
+team: A. Alinejad, T. Alikhani · supervisor Prof. S. H. Pourtakdoust · advice from Dr. S. M. S. Mousavi
+tools: [SOLIDWORKS, FDM printing, Arduino, MATLAB, Python, laser Doppler vibrometry]
+cover: ../../assets/projects/dragonfly-fwmav/vehicle-render.jpg
+coverAlt: Render of the four-wing flapping vehicle with clear membrane wings on carbon spars around a grey printed gearbox.
+specs:
+  - { label: "Mass", value: "82.4 g" }
+  - { label: "Flapping frequency", value: "19.90 ± 0.20 Hz" }
+  - { label: "Stroke amplitude", value: "45° (±22.5°)" }
+  - { label: "Gear ratio", value: "18.94 : 1" }
+  - { label: "Wing length", value: "185 mm" }
+model:
+  src: /models/fm13.glb
+  poster: ../../assets/projects/dragonfly-fwmav/cad-iso.png
+  alt: Interactive 3D model of the FM13 four-wing flapping mechanism, with the gear train highlighted in orange.
+  caption: FM13 CAD assembly, simplified for the web (visual level of detail).
+  credit: "Vendor parts: T-Motor F15 motor, 0.5M metric spur gears, DIN 6799 lock washer (TraceParts)."
+links:
+  - { label: Thesis (PDF), href: /assets/BScThesis_AlirezaAlinejad.pdf }
+---
+import { Image } from 'astro:assets';
+import Figure from '../../components/Figure.astro';
+import Evolution from '../../components/Evolution.astro';
+import m46 from '../../assets/projects/dragonfly-fwmav/mechanism-v46-detail.jpg';
+import front from '../../assets/projects/dragonfly-fwmav/mechanism-v46-front.jpg';
+import flapping from '../../assets/projects/dragonfly-fwmav/prototype-flapping.jpg';
+import mass from '../../assets/projects/dragonfly-fwmav/prototype-82g.jpg';
+import bench from '../../assets/projects/dragonfly-fwmav/test-bench.jpg';
+import wing from '../../assets/projects/dragonfly-fwmav/wing.jpg';
+import annotated from '../../assets/projects/dragonfly-fwmav/prototype-v46-annotated.jpg';
+import fig01 from '../../assets/projects/dragonfly-fwmav/patent-fig01.png';
+import fig02 from '../../assets/projects/dragonfly-fwmav/patent-fig02.png';
+
+## The problem
+
+Dragonflies hover, dart and turn by flapping two pairs of wings with a controlled phase between them. Earlier four-wing micro air vehicles copied this with one actuator per wing. That brings extra weight, more wiring and a synchronization problem, and most of these vehicles weigh well over 100 g.
+
+The goal was a controllable four-wing mechanism under about 80–100 g. It had to flap at 10–20 Hz with a symmetric stroke and steer by changing the rear wings' angle of attack.
+
+## Four architectures, each fixing the last one's failure
+
+The design moved forward test by test. Each architecture was built and pushed until it failed, and the failure analysis set the next one's requirements. In CAD this took more than a dozen iterations, FM1 to FM13.
+
+<Evolution />
+
+## The final mechanism
+
+One T-Motor F15 (6000 KV) brushless motor sits at the center. A three-stage module-0.5 gear train (26 → 36, 10 → 36, 10 → 38, a total ratio of **18.94**) splits into two symmetric branches. On each branch an angled 45° coupling and a slider turn rotation into a ±22.5° flapping stroke, so all four wings stay mechanically synchronized. Two micro servos rotate the rear-wing holders to set their angle of attack, which is the control input for pitch, roll and yaw.
+
+<Figure src={m46} alt="Close-up render of the final gearbox: grey printed frame, red output gears and blue servo blocks." caption="Mechanism v4.6, perspective view of the gearbox and rear-wing servos." />
+
+<Figure src={front} alt="Front cut-away render of the v4.6 mechanism showing the stacked gear train inside the printed body." caption="Front cut-away showing the stacked three-stage gear train." />
+
+Each wing has a 185 mm spar of 2 mm pultruded carbon and three carbon ribs at 55°, with a 20 µm PET membrane on top. The joints are PLA printed at 100% infill and reamed to 2.05 mm. One wing weighs 5.9 g.
+
+<Figure src={wing} alt="Photo of a single wing with dimension arrows: 185 mm spar and ribs of 55, 66 and 43 mm." caption="Wing layout: carbon spar and ribs, PET membrane." />
+
+## Prototype and validation
+
+On the bench, the assembled vehicle weighs **82.4 g**: 20.2 g of mechanism, 23.6 g of wings, a 7.8 g motor, 7.4 g of servos, 8.4 g of bearings and hardware, and 15 g of balance weights that a 2S LiPo and flight controller will replace.
+
+<Figure src={mass} alt="Top-down photo of the full four-wing vehicle on a digital scale reading 82.4 g." caption="The full vehicle on the scale." wide />
+
+The flapping frequency was measured optically. A retroreflective tag on a wing was tracked with a laser Doppler vibrometer (Ometron VH300+) at 1 kHz for 72 s while an Arduino Mega ramped the throttle. Band-pass filtering and zero-crossing counting gave **19.90 Hz mean, 0.20 Hz standard deviation**, within 0.5% of the 20 Hz target. Four-wing flapping stayed stable from 10 to 20 Hz and ran continuously for more than 5 minutes without overheating.
+
+<div class="not-prose grid gap-4 sm:grid-cols-2">
+  <Figure src={flapping} alt="The prototype flapping at full speed, red wings motion-blurred against a grey background." caption="Flapping at full throttle." />
+  <Figure src={bench} alt="Test bench with programmable power supply, Arduino Mega and wiring around the prototype." caption="Test bench: power supply, Arduino Mega PWM, Python logging." />
+</div>
+
+<Figure src={annotated} alt="Two close-up photos of the v4.6 prototype with labels for the servos, gears of 34, 26, 36-10 and 38 teeth, the T-Motor F15 and balancing weights." caption="Prototype v4.6 with its main components labeled." />
+
+**Not yet done:** free flight hasn't been demonstrated. The rear-wing angle-of-attack linkage slips above about 18 Hz, and the plastic gears wear after more than 30 minutes. Next steps are a carbon-composite body, POM or brass gears, a closed-loop 6-axis flight controller, and wind-tunnel tests.
+
+## Patent application
+
+The mechanism is the subject of a patent application filed with the Iran Intellectual Property Office in 2025 (No. 140450140003008393, pending). Inventors: A. Alinejad, T. Alikhani, S. H. Pourtakdoust and S. M. S. Mousavi. It claims the single-motor symmetric gear train, the coupling-and-slider stroke converter, and servo control of the rear wings.
+
+<Figure src={fig01} alt="Patent line drawing: top, side, front and perspective views of the four-wing vehicle." caption="Patent drawing 1: general views of the vehicle." />
+
+<Figure src={fig02} alt="Patent line drawing: exploded view of the mechanism with numbered parts." caption="Patent drawing 2: exploded view." />

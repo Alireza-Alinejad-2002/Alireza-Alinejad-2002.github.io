@@ -1,0 +1,58 @@
+---
+import { getImage } from 'astro:assets';
+import EvolutionScroller from './EvolutionScroller';
+import m1 from '../assets/projects/dragonfly-fwmav/m1-coil-magnet.jpg';
+import m2 from '../assets/projects/dragonfly-fwmav/m2-coreless.jpg';
+import m3 from '../assets/projects/dragonfly-fwmav/m3-dove.jpg';
+import m4 from '../assets/projects/dragonfly-fwmav/mechanism-v46-detail.jpg';
+
+const steps = [
+  {
+    id: 'M1', name: 'Coil and magnet', img: m1,
+    alt: 'Render of four coil actuators, each driving a wing through an N42 magnet.',
+    what: 'A hand-wound 1,155-turn coil swings an N42 magnet for each wing.',
+    result: 'Peak torque of 0.06–0.2 mN·m, the same order as the magnet’s own weight. The amplitude was tiny, and 10–20 Hz could not be sustained under load.',
+    verdict: 'Abandoned',
+  },
+  {
+    id: 'M2', name: 'Four coreless motors', img: m2,
+    alt: 'Render of the four-motor crank-slider mechanism with zoomed insets of the gears and motor.',
+    what: 'One 7 mm coreless motor per wing, with a 14 : 79 gear and a crank-slider giving about ±29°.',
+    result: 'Stable, synchronized flapping up to 10 Hz, with independent frequency per wing. But 10 g of motors, eight wires and the synchronization effort didn’t scale.',
+    verdict: 'Superseded',
+  },
+  {
+    id: 'M3', name: 'Dove-type gear linkage', img: m3,
+    alt: 'Three renders of a single-motor helical-gear mechanism with red four-bar links.',
+    what: 'A single brushless motor drives a gear train, a rack and pinion, and twin asymmetric four-bars with a 90° phase offset.',
+    result: 'The mechanism alone was estimated at 28 g, against a 20 g target, and it was too long. It stayed in CAD.',
+    verdict: 'CAD only',
+  },
+  {
+    id: 'M4', name: 'Central brushless drive', img: m4,
+    alt: 'Render of the final gearbox with red output gears and blue rear-wing servos.',
+    what: 'One T-Motor F15 drives a three-stage gear train and eccentric converters to all four wings; two servos set the rear-wing angle of attack.',
+    result: 'Six revisions (v4.1–v4.6) fixed motor torque, printing cost, pin failures and servo moments. v4.6 flaps all four wings at 20 Hz.',
+    verdict: 'Final',
+  },
+];
+
+// Pre-sized WebP variants; the React island gets plain src/srcset strings.
+const withImages = await Promise.all(
+  steps.map(async ({ img, ...rest }) => {
+    const variants = await Promise.all([480, 960].map((w) => getImage({ src: img, width: w, format: 'webp' })));
+    return {
+      ...rest,
+      img: {
+        src: variants[1].src,
+        srcset: variants.map((v, k) => `${v.src} ${[480, 960][k]}w`).join(', '),
+        width: 960,
+        height: Math.round((960 * img.height) / img.width),
+      },
+    };
+  }),
+);
+---
+<div class="max-w-none!">
+  <EvolutionScroller client:visible steps={withImages} />
+</div>

@@ -1,0 +1,23 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Props { src: ImageMetadata; alt: string; caption?: string; wide?: boolean; contain?: boolean }
+const { src, alt, caption, wide = false, contain = false } = Astro.props;
+const isLineArt = src.format === 'png' || src.format === 'svg';
+---
+<figure class:list={['not-prose my-8', wide && 'max-w-none!']}>
+  <div class:list={['frame border border-hairline', isLineArt && 'bg-white']}>
+    <Image
+      src={src}
+      alt={alt}
+      widths={[480, 800, 1200, 1600]}
+      sizes={wide ? '(min-width: 1024px) 800px, 100vw' : '(min-width: 768px) 720px, 100vw'}
+      format={isLineArt ? 'webp' : 'avif'}
+      quality={isLineArt ? 92 : 70}
+      class:list={['h-auto w-full', contain && 'object-contain']}
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  {caption && <figcaption class="meta mt-2">{caption}</figcaption>}
+</figure>

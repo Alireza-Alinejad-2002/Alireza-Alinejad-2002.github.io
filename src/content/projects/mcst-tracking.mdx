@@ -1,0 +1,32 @@
+---
+title: Reproducing MCST, a Bi-LSTM tracker for maneuvering targets
+short: MCST target-tracking reproduction
+summary: A from-scratch PyTorch reimplementation of a data-driven tracker for high-speed, highly maneuverable targets, built for the Navigation & Guidance and Principles of Machine Learning courses.
+order: 5
+period: Feb 2025 – Jun 2025
+context: Navigation & Guidance · Principles of Machine Learning, Sharif University of Technology
+role: Reimplementation and training
+tools: [Python, PyTorch, NumPy, Bi-LSTM, attention]
+cover: ../../assets/projects/mcst-tracking/architecture.svg
+coverAlt: "Diagram of the MCST tracker: sampled states pass through a maneuver-compensation unit, a two-layer Bi-LSTM and dual attention into predictor and updater heads."
+coverFit: contain
+specs:
+  - { label: "Paper", value: "IEEE TAES 61(2), 2025" }
+  - { label: "Network", value: "MCU + Bi-LSTM (2 × 64) + attention" }
+links:
+  - { label: Original paper (DOI), href: 'https://doi.org/10.1109/TAES.2024.3484393' }
+---
+## The paper
+
+Shen, Yuan, Yan and Ma, *MCST: An Adaptive Tracking Algorithm for High-Speed and Highly Maneuverable Targets Based on Bidirectional LSTM Network*, IEEE Transactions on Aerospace and Electronic Systems 61(2), 2025. Classical trackers such as interacting-multiple-model filters depend on a bank of motion models. When a target maneuvers outside that bank, the error grows. MCST learns the predict–update cycle of a Kalman-type filter directly from data.
+
+## How it works
+
+- **Sampling.** The state is a diagonal Gaussian. A few samples are drawn with the reparameterization trick, so uncertainty flows through the network.
+- **Maneuver-compensation unit (MCU).** When the motion model is wrong, the residual between measurement and estimate concentrates at low frequencies. The MCU takes the FFT of the residual sequence, gates each frequency with a learned weight, and transforms back to correct the state.
+- **Predictor.** A two-layer Bi-LSTM (64 units per layer) with attention over time steps and over samples outputs a mean and a log-variance.
+- **Updater.** An MLP fuses prediction and measurement with a learned gain that plays the role of the Kalman gain, and also estimates measurement noise. Training minimizes MSE plus Gaussian negative log-likelihood.
+
+## My reproduction
+
+I reimplemented the model in PyTorch, including the maneuver-compensation unit and the Bi-LSTM predictor, and reproduced its adaptive tracking of high-speed, maneuvering targets. This was the main project of both courses.

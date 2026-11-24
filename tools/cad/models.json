@@ -1,0 +1,101 @@
+{
+  "fm13": {
+    "slug": "dragonfly-fwmav",
+    "src": "D:\\Programming\\SolidWorks\\Dragonfly\\FM13\\ArmTestAssem13.SLDASM",
+    "raw": "out/raw/fm13.glb",
+    "out": "public/models/fm13.glb",
+    "exclude": [
+      "face-*"
+    ],
+    "orange": [
+      "Metric - Spur gear*"
+    ],
+    "budget": 300000,
+    "excludeFile": "exclude-fm13.txt",
+    "credits": [
+      "T-Motor F15 brushless motor (vendor model, F15.SLDPRT)",
+      "Metric spur gears 0.5M (SOLIDWORKS Toolbox-style generated parts, Gears/*)",
+      "DIN 6799 lock washer 3.2 (TraceParts)"
+    ],
+    "lod": "visual",
+    "tones": {
+      "membrane": [
+        "wingfoam-*"
+      ],
+      "graphite": [
+        "spar-*",
+        "rib?-*",
+        "bent_pin13-*",
+        "ServoMotor-*"
+      ],
+      "grey": [
+        "BigPin11-*",
+        "Niddle-*",
+        "Bearing362-*",
+        "lock_washer*",
+        "F15-*"
+      ]
+    },
+    "simplifyRatio": 0.6
+  },
+  "aeronex": {
+    "slug": "aeronex-dep-air-taxi",
+    "src": "D:\\Programming\\SolidWorks\\AD2\\Airplane.SLDASM",
+    "raw": "out/raw/aeronex.glb",
+    "out": "public/models/aeronex.glb",
+    "exclude": [
+      "PilotSeat-*",
+      "sandali bussnes-*",
+      "Dummy-*"
+    ],
+    "orange": [
+      "Nose Cone-*"
+    ],
+    "budget": 240000,
+    "excludeFile": "exclude-aeronex.txt",
+    "credits": [],
+    "note": "Owner decision 2026-11-18: exclude seats and human dummy only; keep SR22 panel, fire extinguisher, weather radar, NLG, MLG, 3-blade and 5-blade props and the SF50 reference mesh in Fuselage, with no credit.",
+    "listDepth": 1,
+    "internal": [
+      "Pitching Planet Pinion Gear-*",
+      "Pitching Pinion Gear-*",
+      "Pitching Planet Gear-*",
+      "Pitching Washer-*",
+      "Fan Vin Faten Pin-*",
+      "Vin Rubber Washer-*",
+      "Root Fasten Set-*",
+      "Bearing 116107*"
+    ],
+    "tess": "out/raw/aeronex-fuselage.tess",
+    "tones": {
+      "graphite": [
+        "Fan Vin-*",
+        "3blade_prop-*"
+      ],
+      "grey": [
+        "Fans Housing-*",
+        "DEPEngine-*",
+        "DEPEngine_Holder-*"
+      ]
+    }
+  },
+  "manticores": {
+    "slug": "amphibious-manticores",
+    "src": "E:\\SUT\\BSc\\Semester7\\Aircraft Design 1\\Project 2\\Manticores_FinalReport\\final_configuration.x_t",
+    "raw": null,
+    "out": "public/models/manticores.glb",
+    "exclude": [],
+    "orange": [],
+    "budget": 200000,
+    "excludeFile": "exclude-manticores.txt",
+    "credits": [],
+    "note": "Imports as an unsaved assembly: Part1-3 (airframe, 45 surface bodies), nos-2 x2, propeller-2 x6. Owner: all team-made. The glTF add-in skips its surface bodies, so the GLB is built from SwExport tess only.",
+    "tess": "out/raw/manticores.tess",
+    "redAccent": true,
+    "tones": {
+      "graphite": [
+        "propeller-2-*"
+      ]
+    }
+  }
+}

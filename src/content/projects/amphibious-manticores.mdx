@@ -1,0 +1,61 @@
+---
+title: Manticores, an amphibious transport aircraft
+short: Manticores amphibious aircraft
+summary: A twin-engine flying boat for six to eight seats, designed to the Royal Aeronautical Society's 2024/25 light-aircraft brief. The team sized it from mission to configuration with its own MATLAB toolchain.
+order: 3
+period: Sep 2024 – Jan 2025
+context: Aircraft Design 1 · Sharif University of Technology
+role: Empennage design and payload–range analysis; MATLAB sizing toolchain (team)
+team: Team Manticores, A. Alinejad, H. Fadaei, M. R. Dashtbani, P. Pourkhosro · advisor Dr. Afshin Banazadeh
+tools: [MATLAB, SOLIDWORKS, Roskam Class I methods, CS-23, Excel]
+cover: ../../assets/projects/amphibious-manticores/hero-render.jpg
+coverAlt: Render of the Manticores amphibian, a white and teal high-wing flying boat with two wing-mounted propellers and red sponsons.
+coverPosition: "25% 50%"
+specs:
+  - { label: "Take-off weight", value: "5,017 kg" }
+  - { label: "Span · length", value: "17.75 m · 12.5 m" }
+  - { label: "Wing", value: "30.6 m² · AR 10.3" }
+  - { label: "Cruise", value: "175 kt at 10,000 ft" }
+  - { label: "Seats", value: "8 passengers + 2 crew" }
+model:
+  src: /models/manticores.glb
+  poster: ../../assets/projects/amphibious-manticores/cad-iso.png
+  alt: Interactive 3D model of the Manticores amphibian, a high-wing flying boat with two wing-mounted propellers and the hull bottom and sponsons in orange.
+  caption: Final configuration from the team's CAD, simplified for the web; the hull bottom and sponsons are in orange.
+---
+import Figure from '../../components/Figure.astro';
+import Sitl from '../partials/sitl.mdx';
+import hero from '../../assets/projects/amphibious-manticores/cad-hero.png';
+import front from '../../assets/projects/amphibious-manticores/front.jpg';
+import top from '../../assets/projects/amphibious-manticores/top.jpg';
+import side from '../../assets/projects/amphibious-manticores/side.jpg';
+
+## Brief
+
+The mission comes from the RAeS International Light Aircraft Design Competition 2024/25 RFP. It calls for a piloted, fixed-wing amphibian with six to eight seats for global use, certifiable to CS-23 with the water-load special conditions. At ISA + 20 °C it must fly a 750 km stage at 65 m/s or faster, hold for 30 minutes, and take off from water within 1,200 m in waves up to 0.6 m. We designed to that brief in the Aircraft Design 1 course; the project was not submitted to the competition.
+
+<Figure src={hero} alt="Trimetric view of the Manticores CAD model: white and teal high wing and cruciform tail, red stepped hull and sponsons, two wing-mounted propellers." caption="Final configuration (SOLIDWORKS)." />
+
+## Configuration
+
+We chose a conventional flying boat. It has a stepped hull with Dornier-style sponsons rather than wingtip or retractable floats, a high cantilever wing with no sweep and a 0.77 taper ratio, and single-slotted flaps. The two wing-mounted tractor propellers keep the engines out of spray, and differential thrust steers on water. The tail is cruciform, and the tricycle landing gear retracts into the hull and wing for land operations. Wing, empennage and nacelles are composite, and the hull is credited with a smaller weight saving because of saltwater exposure.
+
+<div class="not-prose grid gap-4 sm:grid-cols-3">
+  <Figure src={front} alt="Front view of the amphibian showing the hull, sponsons and two propellers." caption="Front" />
+  <Figure src={top} alt="Top view of the amphibian showing the straight high wing and cruciform tail." caption="Top" />
+  <Figure src={side} alt="Side view of the amphibian showing the stepped hull and cruciform tail." caption="Side" />
+</div>
+
+## Sizing toolchain
+
+The team wrote its own MATLAB sizing code. It works through Roskam Class I methods:
+- a technology-line regression of take-off weight against empty weight from comparable amphibians;
+- mission fuel fractions with Breguet range and endurance for every segment, including a VFR reserve with an aborted landing;
+- Roskam's analytical sensitivities;
+- a matching diagram with CS-23 seaplane climb gradients and take-off, landing, cruise and turn constraints.
+
+The sizing run gives an 11,490 lb take-off weight with aluminium structure. The Class I composite estimate brings that down to **11,061 lb (5,017 kg)**, about 58% of the brief's mass cap.
+
+My sections were the empennage and the payload–range diagram. For the tail, I compared conventional, cruciform and V-tail options, and sized the cruciform layout from Dornier Seastar volume coefficients: a 65 ft² horizontal tail and a 44 ft² vertical tail. A dorsal fin was considered and rejected.
+
+<Sitl />

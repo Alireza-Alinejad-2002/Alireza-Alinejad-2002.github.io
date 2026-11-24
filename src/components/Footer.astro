@@ -1,0 +1,15 @@
+---
+import { person } from '../data/profile';
+const year = new Date().getFullYear();
+---
+<footer class="mt-24 border-t border-hairline">
+  <div class="wrap flex flex-col gap-3 py-8 text-[0.875rem] text-muted sm:flex-row sm:items-center sm:justify-between">
+    <p>© {year} {person.name}</p>
+    <ul class="flex flex-wrap gap-x-5 gap-y-1">
+      <li><a class="link-draw" href={`mailto:${person.email}`}>Email</a></li>
+      <li><a class="link-draw" href={person.linkedin} target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a class="link-draw" href={person.github} target="_blank" rel="noopener">GitHub</a></li>
+      <li><a class="link-draw" href={person.cv} target="_blank" rel="noopener">CV</a></li>
+    </ul>
+  </div>
+</footer>

@@ -1,0 +1,31 @@
+---
+import Icon from './Icon.astro';
+import { person } from '../data/profile';
+const path = Astro.url.pathname;
+const home = path === '/' ? '' : '/';
+const links = [
+  { href: `${home}#work`, label: 'Work' },
+  { href: `${home}#publications`, label: 'Research' },
+  { href: `${home}#about`, label: 'About' },
+];
+---
+<header class="sticky top-0 z-40 border-b border-hairline bg-paper/90 backdrop-blur-sm supports-[backdrop-filter]:bg-paper/80">
+  <nav class="wrap flex h-14 items-center justify-between gap-4" aria-label="Main">
+    <a href="/" class="min-w-0 truncate font-medium tracking-tight" aria-label={`${person.name}, home`}>
+      {person.name}
+    </a>
+    <div class="flex items-center gap-1 sm:gap-2">
+      <ul class="hidden items-center gap-6 sm:flex">
+        {links.map((l) => (
+          <li><a href={l.href} class="link-draw text-[0.9375rem]">{l.label}</a></li>
+        ))}
+      </ul>
+      <a href={person.cv} class="inline-flex items-center gap-1.5 border border-hairline px-2.5 py-1.5 sm:px-3 text-[0.875rem] transition-colors hover:border-ink sm:ml-4 shrink-0" target="_blank" rel="noopener">
+        <span>CV</span><Icon name="arrow-down" class="size-3.5" />
+      </a>
+      <button type="button" data-theme-toggle class="grid size-9 shrink-0 place-items-center transition-transform hover:rotate-180 duration-500" aria-label="Toggle dark mode" aria-pressed="false">
+        <Icon name="theme" class="size-[18px]" />
+      </button>
+    </div>
+  </nav>
+</header>

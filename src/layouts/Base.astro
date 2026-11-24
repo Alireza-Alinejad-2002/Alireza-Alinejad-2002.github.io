@@ -1,0 +1,85 @@
+---
+import { Font } from 'astro:assets';
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { person } from '../data/profile';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  jsonLd?: boolean;
+}
+
+const {
+  title,
+  description = 'Alireza Alinejad, aerospace engineer (B.Sc., Sharif University of Technology). Bio-inspired flapping-wing robots, aircraft design, flight simulation and machine learning for navigation.',
+  ogImage,
+  jsonLd = false,
+} = Astro.props;
+
+const fullTitle = title ? `${title} · ${person.name}` : `${person.name} · Aerospace engineer`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const og = ogImage ? new URL(ogImage, Astro.site).href : undefined;
+
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: person.name,
+  url: person.site,
+  email: `mailto:${person.email}`,
+  jobTitle: 'Aerospace engineer',
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'Sharif University of Technology' },
+  sameAs: [person.linkedin, person.github],
+  knowsAbout: ['Flapping-wing micro air vehicles', 'Aircraft design', 'Flight dynamics', 'Robotics', 'Machine learning'],
+};
+---
+
+<!doctype html>
+<html lang="en" data-theme="blueprint">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <script is:inline>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add('js');
+        var t = null;
+        try { t = localStorage.getItem('theme'); } catch (e) {}
+        if (t !== 'blueprint' && t !== 'blueprint-dark') {
+          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'blueprint-dark' : 'blueprint';
+        }
+        d.setAttribute('data-theme', t);
+      })();
+    </script>
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e0f10" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {og && <meta property="og:image" content={og} />}
+    <meta name="twitter:card" content={og ? 'summary_large_image' : 'summary'} />
+    <Font cssVariable="--font-plex-sans" preload />
+    <Font cssVariable="--font-plex-mono" />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(ld)} />}
+  </head>
+  <body class="min-h-dvh">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-paper focus:px-3 focus:py-2">Skip to content</a>
+    <Nav />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      import '../scripts/site';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+---
+import { Image, getImage } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import ModelViewer from '../../components/ModelViewer.astro';
+
+export async function getStaticPaths() {
+  const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+  return projects.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: { entry, next: projects[(i + 1) % projects.length] },
+  }));
+}
+
+const { entry, next } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const og = d.cover.format === 'svg' ? undefined : (await getImage({ src: d.cover, width: 1200, format: 'jpg' })).src;
+---
+
+<Base title={d.short} description={d.summary} ogImage={og}>
+  <article>
+    <header class="wrap pt-10 sm:pt-14">
+      <a href="/#work" class="meta inline-flex items-center gap-1.5 hover:text-ink"><Icon name="arrow" class="size-3.5 rotate-180" />All work</a>
+      <h1 class="mt-6 max-w-[56rem] text-title font-medium sm:text-[3.25rem] sm:leading-[1.04]">{d.title}</h1>
+      <p class="mt-5 max-w-[44rem] text-xl leading-relaxed text-muted">{d.summary}</p>
+    </header>
+
+    <div class="wrap mt-10">
+      <div class:list={['frame max-w-[60rem] border border-hairline', d.coverFit === 'contain' ? 'bg-paper' : 'bg-white']}>
+        <Image src={d.cover} alt={d.coverAlt} widths={[640, 960, 1280, 1920]} sizes="(min-width: 1024px) 960px, 100vw" class="h-auto w-full" loading="eager" fetchpriority="high" />
+      </div>
+      {d.model && (
+        <div class="max-w-[60rem]">
+          <ModelViewer src={d.model.src} poster={d.model.poster} alt={d.model.alt} caption={d.model.caption} credit={d.model.credit} />
+        </div>
+      )}
+    </div>
+
+    <div class="wrap mt-12 grid gap-12 lg:grid-cols-12 lg:gap-8">
+      <aside class="lg:col-span-4">
+        <div class="lg:sticky lg:top-20">
+          <dl class="border-t border-hairline text-[0.9375rem]">
+            <div class="border-b border-hairline py-3"><dt class="meta">Period</dt><dd class="mt-0.5">{d.period}</dd></div>
+            <div class="border-b border-hairline py-3"><dt class="meta">Context</dt><dd class="mt-0.5">{d.context}</dd></div>
+            <div class="border-b border-hairline py-3"><dt class="meta">My role</dt><dd class="mt-0.5">{d.role}</dd></div>
+            {d.team && <div class="border-b border-hairline py-3"><dt class="meta">Team</dt><dd class="mt-0.5">{d.team}</dd></div>}
+            <div class="border-b border-hairline py-3"><dt class="meta">Tools</dt><dd class="mt-0.5">{d.tools.join(' · ')}</dd></div>
+            {d.specs.map((s) => (
+              <div class="border-b border-hairline py-3"><dt class="meta">{s.label}</dt><dd class="mt-0.5 font-mono tabular-nums">{s.value}</dd></div>
+            ))}
+          </dl>
+          {d.links.length > 0 && (
+            <ul class="mt-5 space-y-2">
+              {d.links.map((l) => (
+                <li>
+                  <a href={l.href} class="inline-flex items-center gap-1.5 link-draw" target="_blank" rel="noopener">{l.label}<Icon name="external" class="size-3.5" /></a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </aside>
+
+      <div class="prose prose-blueprint prose-lg max-w-none lg:col-span-8 [&>*]:max-w-[42rem]">
+        <Content />
+      </div>
+    </div>
+
+    <nav class="wrap mt-24 border-t border-hairline pt-8" aria-label="Next project">
+      <a href={`/work/${next.id}/`} class="group flex items-baseline justify-between gap-6">
+        <span>
+          <span class="meta block">Next project</span>
+          <span class="mt-1 block text-2xl font-medium tracking-tight"><span class="link-draw">{next.data.title}</span></span>
+        </span>
+        <Icon name="arrow" class="size-6 shrink-0 transition-transform group-hover:translate-x-1" />
+      </a>
+    </nav>
+  </article>
+</Base>

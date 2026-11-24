@@ -1,0 +1,7 @@
+import SitlDiagram from '../../components/SitlDiagram.astro';
+
+## Flight dynamics and software-in-the-loop simulation
+
+Alongside the design work on our aircraft-design projects I built a simulator for software-in-the-loop (SITL) testing. A six-degree-of-freedom aircraft model in MATLAB/Simulink is driven by aerodynamic data from OpenVSP, AVL and Digital DATCOM. A PX4 autopilot closes the loop in SITL, and FlightGear provides the visualization. I also used JSBSim to model the flight dynamics.
+
+<SitlDiagram />

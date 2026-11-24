@@ -1,0 +1,287 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import lineart from '../assets/lineart/fm13-perspective.svg?raw';
+import portrait from '../assets/profile/portrait.jpg';
+import pendulum from '../assets/projects/misc/rotary-pendulum.jpg';
+import quad from '../assets/projects/misc/quadrotor-simulink.png';
+import {
+  person, objective, roadmap, interests, education, experience, skills, languages,
+  honors, leadership, certifications, publications,
+} from '../data/profile';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const [lead, ...rest] = projects;
+
+const more = [
+  {
+    title: 'ROS2 mobile-robot navigation and NAO interaction',
+    period: 'Feb – Jun 2025',
+    text: 'Mapped and explored with a TurtleBot3 in Gazebo, then deployed the navigation stack on the real robot; programmed NAO movement and interaction in Choregraphe.',
+    tools: 'ROS2 · Gazebo · TurtleBot3 · NAO',
+  },
+  {
+    title: 'Rotary inverted pendulum on a Raspberry Pi',
+    period: 'Sep 2025',
+    text: 'Configured a Raspberry Pi over SSH and implemented a C++ stabilization controller for a rotary inverted pendulum, in a self-directed hardware project.',
+    tools: 'Raspberry Pi · C++ · SSH',
+    img: pendulum,
+    alt: 'Rotary inverted pendulum rig on a metal tripod stand with its motor driver board and wiring.',
+  },
+  {
+    title: 'Quadrotor control-system simulation',
+    period: 'Feb – Jun 2024',
+    text: '6-DoF quadrotor dynamics in Simulink and Simscape with PID attitude and position control, validated for stability and trajectory tracking.',
+    tools: 'MATLAB · Simulink · Simscape · SOLIDWORKS',
+    href: 'https://github.com/Alireza-Alinejad-2002/Design-and-Simulation-of-a-Quadrotor-Controller-Using-MATLAB-Simulink',
+    img: quad,
+    alt: 'Simulink block diagram: desired trajectory, controller, logic and quadrotor dynamics with state feedback.',
+  },
+  {
+    title: 'Cessna 310 flight-dynamics analysis',
+    period: 'Feb – Jun 2024',
+    text: 'Extracted stability derivatives with Digital DATCOM and analyzed longitudinal and lateral-directional modes in MATLAB.',
+    tools: 'Digital DATCOM · MATLAB',
+  },
+];
+---
+
+<Base jsonLd>
+  <!-- Hero -->
+  <section class="wrap grid items-center gap-10 pt-12 pb-16 sm:pt-16 lg:min-h-[calc(100svh-3.5rem)] lg:grid-cols-12 lg:gap-8 lg:py-10">
+    <div class="lg:col-span-6">
+      <h1 class="text-display font-medium">{person.name}</h1>
+      <p class="mt-6 max-w-[34rem] text-xl leading-relaxed sm:text-[1.375rem]">{person.tagline}</p>
+      <p class="meta mt-6">B.Sc. Aerospace Engineering · Sharif University of Technology · 2026</p>
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a href="#work" class="btn-ink">Selected work <Icon name="arrow-down" /></a>
+        <a href={person.cv} class="btn-line" target="_blank" rel="noopener">Curriculum vitae <Icon name="file" /></a>
+      </div>
+      <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[0.9375rem]">
+        <li><a class="inline-flex min-w-0 items-center gap-2 link-draw [overflow-wrap:anywhere]" href={`mailto:${person.email}`}><Icon name="mail" />{person.email}</a></li>
+        <li><a class="inline-flex items-center gap-2 link-draw" href={person.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" />LinkedIn</a></li>
+        <li><a class="inline-flex items-center gap-2 link-draw" href={person.github} target="_blank" rel="noopener"><Icon name="github" />GitHub</a></li>
+      </ul>
+    </div>
+    <div class="lg:col-span-6">
+      <div class="grid-paper relative border border-hairline">
+        <div class="lineart-draw px-4 pt-6 pb-10 text-ink [&>svg]:h-auto [&>svg]:w-full" role="img" aria-label="Line drawing of the patented dragonfly-inspired four-wing flapping mechanism, perspective view." set:html={lineart} />
+        <span class="meta absolute bottom-2 left-3">FM13 · four-wing flapping mechanism</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Selected work -->
+  <section id="work" class="wrap scroll-mt-16 border-t border-hairline pt-14">
+    <h2 class="text-title">Selected work</h2>
+
+    <a href={`/work/${lead.id}/`} class="group mt-10 grid gap-6 lg:grid-cols-12 lg:gap-8" data-reveal>
+      <div class="frame aspect-[5/4] border border-hairline bg-white lg:col-span-7">
+        <Image src={lead.data.cover} alt={lead.data.coverAlt} widths={[640, 960, 1280, 1600]} sizes="(min-width: 1024px) 680px, 100vw" class="size-full object-cover" loading="eager" fetchpriority="high" />
+      </div>
+      <div class="flex flex-col lg:col-span-5 lg:py-2">
+        <p class="meta">{lead.data.period}</p>
+        <h3 class="mt-2 text-[1.75rem] leading-tight font-medium tracking-tight sm:text-[2rem]">
+          <span class="link-draw">{lead.data.title}</span>
+        </h3>
+        <p class="mt-4 text-muted">{lead.data.summary}</p>
+        <dl class="mt-6 grid grid-cols-2 border-t border-hairline">
+          {lead.data.specs.slice(0, 4).map((s) => (
+            <div class="border-b border-hairline py-3 pr-3">
+              <dt class="meta">{s.label}</dt>
+              <dd class="mt-0.5 font-mono text-[0.9375rem] tabular-nums">{s.value}</dd>
+            </div>
+          ))}
+        </dl>
+        <p class="mt-6 inline-flex items-center gap-2 font-medium">Read the case study <Icon name="arrow" class="size-4 transition-transform group-hover:translate-x-1" /></p>
+      </div>
+    </a>
+
+    <ul class="mt-16 grid gap-x-8 gap-y-14 md:grid-cols-2">
+      {rest.map((p) => (
+        <li data-reveal>
+          <a href={`/work/${p.id}/`} class="group block">
+            <div class:list={['frame aspect-[2/1] border border-hairline', p.data.coverFit === 'contain' ? 'bg-paper' : 'bg-white']}>
+              <Image src={p.data.cover} alt={p.data.coverAlt} widths={[480, 720, 960]} sizes="(min-width: 768px) 560px, 100vw" class:list={['size-full', p.data.coverFit === 'contain' ? 'object-contain' : 'object-cover']} style={`object-position:${p.data.coverPosition}`} loading="lazy" />
+            </div>
+            <p class="meta mt-4">{p.data.period} · {p.data.context.split(' · ')[0]}</p>
+            <h3 class="mt-1.5 text-xl leading-snug font-medium"><span class="link-draw">{p.data.title}</span></h3>
+            <p class="mt-2 text-muted">{p.data.summary}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- More projects -->
+  <section class="wrap mt-24 border-t border-hairline pt-14">
+    <h2 class="text-title">More projects</h2>
+    <ul class="mt-8 border-t border-hairline">
+      {more.map((m) => (
+        <li class="grid gap-4 border-b border-hairline py-6 md:grid-cols-12 md:gap-8" data-reveal>
+          <p class="meta md:col-span-2 md:pt-1">{m.period}</p>
+          <div class="md:col-span-6">
+            <h3 class="text-lg font-medium">
+              {m.href ? (
+                <a href={m.href} target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 link-draw">{m.title}<Icon name="external" class="size-3.5" /></a>
+              ) : m.title}
+            </h3>
+            <p class="mt-1.5 text-muted">{m.text}</p>
+            <p class="meta mt-2">{m.tools}</p>
+          </div>
+          <div class="md:col-span-4">
+            {m.img && (
+              <div class="frame aspect-[16/10] border border-hairline bg-white">
+                <Image src={m.img} alt={m.alt ?? ''} widths={[400, 640]} sizes="(min-width: 768px) 360px, 100vw" class="size-full object-cover" loading="lazy" />
+              </div>
+            )}
+          </div>
+        </li>
+      ))}
+    </ul>
+    <p class="mt-6 text-muted">More code, including an airfare data miner and a shock-system solver, is on <a class="link-quiet text-ink" href={person.github} target="_blank" rel="noopener">GitHub</a>.</p>
+  </section>
+
+  <!-- Publications -->
+  <section id="publications" class="wrap mt-24 scroll-mt-16 border-t border-hairline pt-14">
+    <h2 class="text-title">Patent, thesis and papers</h2>
+    <ol class="mt-8 border-t border-hairline">
+      {publications.map((p) => (
+        <li class="grid gap-2 border-b border-hairline py-6 md:grid-cols-12 md:gap-8" data-reveal>
+          <p class="meta md:col-span-2 md:pt-1">[{p.tag}] {p.kind}</p>
+          <div class="md:col-span-8">
+            <h3 class="text-lg leading-snug font-medium">{p.title}</h3>
+            <p class="mt-1">{p.authors}</p>
+            <p class="mt-1 text-muted">{p.venue}</p>
+          </div>
+          <p class="md:col-span-2 md:pt-1 md:text-right">
+            <a href={p.href} class="inline-flex items-center gap-1.5 link-draw" {...(p.href.endsWith('.pdf') ? { target: '_blank', rel: 'noopener' } : {})}>
+              {p.linkLabel}<Icon name={p.href.endsWith('.pdf') ? 'file' : 'arrow'} class="size-3.5" />
+            </a>
+          </p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="wrap mt-24 scroll-mt-16 border-t border-hairline pt-14">
+    <div class="grid gap-10 lg:grid-cols-12 lg:gap-8">
+      <div class="lg:col-span-4">
+        <h2 class="text-title">About</h2>
+        <div class="frame mt-8 aspect-square max-w-[22rem] border border-hairline">
+          <Image src={portrait} alt={`Portrait of ${person.name}`} widths={[320, 480, 704]} sizes="(min-width: 1024px) 352px, 80vw" class="size-full object-cover grayscale" loading="lazy" />
+        </div>
+      </div>
+      <div class="lg:col-span-8 lg:pt-2">
+        <p class="max-w-[42rem] text-xl leading-relaxed">{objective}</p>
+
+        <h3 class="mt-12 text-lg font-medium">Where I want to take it</h3>
+        <ol class="mt-4 grid border-t border-hairline sm:grid-cols-3">
+          {roadmap.map((r, i) => (
+            <li class:list={['border-b border-hairline py-5 sm:border-b-0 sm:py-4', i > 0 && 'sm:border-l sm:pl-5', i < 2 && 'sm:pr-5']}>
+              <p class="font-medium">{r.title}</p>
+              <ul class="mt-2 space-y-1 text-[0.9375rem] text-muted">
+                {r.items.map((it) => <li>{it}</li>)}
+              </ul>
+            </li>
+          ))}
+        </ol>
+        <p class="mt-6 text-muted"><span class="text-ink">Interests:</span> {interests.join(' · ')}</p>
+      </div>
+    </div>
+
+    <div class="mt-16 grid gap-10 lg:grid-cols-12 lg:gap-8">
+      <h3 class="text-lg font-medium lg:col-span-4">Education and experience</h3>
+      <div class="lg:col-span-8">
+        <div class="border-t border-hairline py-5">
+          <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+            <p class="font-medium">{education.degree}, {education.school}</p>
+            <p class="meta">{education.period}</p>
+          </div>
+          <p class="mt-1 text-muted">GPA {education.gpa}. {education.note}.</p>
+          <a class="mt-2 inline-flex items-center gap-1.5 text-[0.9375rem] link-draw" href={person.transcript} target="_blank" rel="noopener">Verified transcript <Icon name="external" class="size-3.5" /></a>
+        </div>
+        <ul>
+          {experience.map((e) => (
+            <li class="border-t border-hairline py-5">
+              <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                <p class="font-medium">{e.role}</p>
+                <p class="meta">{e.period}</p>
+              </div>
+              <p class="mt-1 text-muted">{e.org} · {e.detail}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Record -->
+  <section id="record" class="wrap mt-24 border-t border-hairline pt-14">
+    <div class="grid gap-10 lg:grid-cols-12 lg:gap-8">
+      <h2 class="text-title lg:col-span-4">Toolkit and record</h2>
+      <div class="lg:col-span-8">
+        <dl class="border-t border-hairline">
+          {skills.map((s) => (
+            <div class="grid gap-1 border-b border-hairline py-4 sm:grid-cols-[14rem_1fr] sm:gap-6">
+              <dt class="font-medium">{s.group}</dt>
+              <dd class="text-muted">{s.items.join(' · ')}</dd>
+            </div>
+          ))}
+          <div class="grid gap-1 border-b border-hairline py-4 sm:grid-cols-[14rem_1fr] sm:gap-6">
+            <dt class="font-medium">Languages</dt>
+            <dd class="text-muted">{languages.map((l) => `${l.name}: ${l.level}`).join(' · ')}</dd>
+          </div>
+        </dl>
+
+        <div class="mt-12 grid gap-10 sm:grid-cols-2">
+          <div>
+            <h3 class="font-medium">Honors</h3>
+            <ul class="mt-3 space-y-4">
+              {honors.map((h) => (
+                <li><p>{h.title}</p><p class="meta mt-0.5">{h.org} · {h.period}</p></li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-medium">Leadership and service</h3>
+            <ul class="mt-3 space-y-4">
+              {leadership.map((h) => (
+                <li><p>{h.title}</p><p class="meta mt-0.5">{h.org} · {h.period}</p></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="mt-12 font-medium">Certifications</h3>
+        <ul class="mt-3 border-t border-hairline">
+          {certifications.map((c) => (
+            <li class="flex items-baseline justify-between gap-6 border-b border-hairline py-3">
+              <a class="link-draw" href={encodeURI(c.href)} target="_blank" rel="noopener">{c.title}</a>
+              <span class="meta shrink-0">{c.date}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="wrap mt-24 border-t border-hairline pt-14">
+    <div class="grid gap-10 lg:grid-cols-12 lg:gap-8">
+      <h2 class="text-title lg:col-span-4">Contact</h2>
+      <div class="lg:col-span-8">
+        <p class="max-w-[38rem] text-xl leading-relaxed">For research collaborations, or conversations about flight, robotics and control, email is the quickest way to reach me.</p>
+        <ul class="mt-8 grid gap-3 text-[1.0625rem] sm:grid-cols-2">
+          <li><a class="inline-flex min-w-0 items-center gap-3 link-draw [overflow-wrap:anywhere]" href={`mailto:${person.email}`}><Icon name="mail" class="size-5" />{person.email}</a></li>
+          <li><a class="inline-flex min-w-0 items-center gap-3 link-draw [overflow-wrap:anywhere]" href={person.phone.href}><Icon name="phone" class="size-5" />{person.phone.display}</a></li>
+          <li><a class="inline-flex min-w-0 items-center gap-3 link-draw [overflow-wrap:anywhere]" href={person.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" class="size-5" />linkedin.com/in/2002-alireza-alinejad</a></li>
+          <li><a class="inline-flex min-w-0 items-center gap-3 link-draw [overflow-wrap:anywhere]" href={person.github} target="_blank" rel="noopener"><Icon name="github" class="size-5" />github.com/Alireza-Alinejad-2002</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Base>

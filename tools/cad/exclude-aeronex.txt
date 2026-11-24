@@ -1,0 +1,5 @@
+# Third-party parts the owner marked for exclusion (audit 2026-11-18).
+# Matched case-insensitively against component name, leaf name, file name or path; * and ? are wildcards.
+PilotSeat.SLDPRT
+sandali bussnes.SLDPRT
+Dummy.SLDPRT

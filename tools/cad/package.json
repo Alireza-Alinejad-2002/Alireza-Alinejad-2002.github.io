@@ -1,0 +1,17 @@
+{
+  "name": "portfolio-cad-tools",
+  "private": true,
+  "type": "module",
+  "description": "SOLIDWORKS -> PNG/GLB export pipeline for the portfolio case-study pages",
+  "scripts": {
+    "build:sw": "build.cmd",
+    "glb": "node build-glb.mjs"
+  },
+  "dependencies": {
+    "@gltf-transform/core": "^4.5.1",
+    "@gltf-transform/extensions": "^4.5.1",
+    "@gltf-transform/functions": "^4.5.1",
+    "draco3dgltf": "^1.5.9",
+    "meshoptimizer": "^1.3.0"
+  }
+}
