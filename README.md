@@ -38,3 +38,9 @@ Create `src/content/projects/<slug>.mdx` with the frontmatter fields from `conte
      - `glb` uses the native glTF add-in.
      - `tess` tessellates the surface bodies the add-in skips.
   3. Run `node build-glb.mjs <fm13|aeronex|manticores>`. It merges the `tess` output, applies the exclusions and brand tones from `models.json`, simplifies to the triangle budget and writes a meshopt-compressed `public/models/*.glb`.
+- `tools/cad/lineart-flap.mjs`: builds the flapping hero drawing `src/assets/lineart/fm13-flap.svg`.
+  - It projects the FM13 assembly (`out/raw/fm13.glb`, plus `face-1` from `tess --attach 1 --hidden 1`) onto the isometric line art.
+  - It assigns each drawn line to its CAD part, so only the `Wing` folder parts and the `joint13` joints move.
+  - It records each line's depth relative to its wing.
+  - `src/scripts/flap.ts` then rotates each wing about its hinge pin. The hinge axes come from the `joint13`/`joint_holder13` concentric mates (`SwExport mates`).
+  - Add `--debug` to write a part raster for overlay checks.

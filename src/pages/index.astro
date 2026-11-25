@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
-import lineart from '../assets/lineart/fm13-perspective.svg?raw';
+import lineart from '../assets/lineart/fm13-flap.svg?raw';
 import portrait from '../assets/profile/portrait.jpg';
 import pendulum from '../assets/projects/misc/rotary-pendulum.jpg';
 import quad from '../assets/projects/misc/quadrotor-simulink.png';
@@ -284,4 +284,7 @@ const more = [
       </div>
     </div>
   </section>
+  <script>
+    import '../scripts/flap';
+  </script>
 </Base>

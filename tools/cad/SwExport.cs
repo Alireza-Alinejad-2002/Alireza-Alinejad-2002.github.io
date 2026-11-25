@@ -231,7 +231,17 @@ namespace SwExport
                     case "glb": return Glb(Open(Req("src")));
                     case "close": Close(Req("src")); return 0;
                     case "part": return PartExport();
-                    case "tess": return Tess(Open(Req("src")));
+                    case "tess":
+                        // --attach 1: read from a document the user already has open (any mode),
+                        // without reopening or changing its read-only state; tess only reads geometry.
+                        if (Opt("attach", "0") == "1")
+                        {
+                            ModelDoc2 open = FindOpen(Req("src"));
+                            if (open == null) throw new Exception("Not open in SOLIDWORKS: " + Req("src"));
+                            return Tess(open);
+                        }
+                        return Tess(Open(Req("src")));
+                    case "mates": return Mates(Req("src"), Opt("comp", "joint13"));
                     default: Console.Error.WriteLine("unknown command " + cmd); return 2;
                 }
             }
@@ -775,7 +785,7 @@ namespace SwExport
                     object[] comps = (object[])((AssemblyDoc)doc).GetComponents(false);
                     foreach (Component2 c in comps.Cast<Component2>())
                     {
-                        if (c.GetSuppression2() == 0 || c.IsHidden(true)) continue;
+                        if (c.GetSuppression2() == 0 || (c.IsHidden(true) && Opt("hidden", "0") != "1")) continue;
                         string name = c.Name2 ?? "";
                         string leaf = name.Contains("/") ? name.Substring(name.LastIndexOf('/') + 1) : name;
                         if (only.Count > 0 && !only.Any(r => r.IsMatch(name) || r.IsMatch(leaf))) continue;
@@ -797,6 +807,42 @@ namespace SwExport
             }
             Console.WriteLine("Wrote " + count + " bodies to " + outFile + " (" + new FileInfo(outFile).Length + " bytes)");
             return count > 0 ? 0 : 6;
+        }
+
+        // ------------------------------------------------------------ mates (read-only inspection)
+        // Lists the mates of components whose name matches --comp (regex) in an assembly that is
+        // already open, with each mate entity's parameters in assembly space (for a cylindrical
+        // face: point x,y,z, axis i,j,k, radius). Changes nothing and never saves.
+        static int Mates(string src, string compRx)
+        {
+            ModelDoc2 doc = FindOpen(src);
+            if (doc == null) throw new Exception("Assembly is not open in SOLIDWORKS: " + src);
+            if (doc.GetType() != (int)swDocumentTypes_e.swDocASSEMBLY) throw new Exception("Not an assembly");
+            var rx = new Regex(compRx, RegexOptions.IgnoreCase);
+            object[] comps = (object[])((AssemblyDoc)doc).GetComponents(true);
+            foreach (Component2 c in comps.Cast<Component2>().OrderBy(c => c.Name2))
+            {
+                if (!rx.IsMatch(c.Name2 ?? "")) continue;
+                Console.WriteLine(c.Name2);
+                object[] mates = (object[])c.GetMates();
+                if (mates == null) { Console.WriteLine("  (no mates)"); continue; }
+                foreach (object o in mates)
+                {
+                    Mate2 m = o as Mate2;
+                    if (m == null) continue;
+                    var parts = new List<string>();
+                    for (int i = 0; i < m.GetMateEntityCount(); i++)
+                    {
+                        MateEntity2 me = m.MateEntity(i);
+                        Component2 rc = me.ReferenceComponent;
+                        double[] p = me.EntityParams as double[];
+                        parts.Add((rc == null ? "?" : rc.Name2) + " type " + me.ReferenceType2 + " [" +
+                            (p == null ? "" : string.Join(",", p.Select(v => (v * 1000).ToString("0.###", CultureInfo.InvariantCulture)))) + "]");
+                    }
+                    Console.WriteLine("  mate type " + m.Type + " align " + m.Alignment + " :: " + string.Join("  <->  ", parts));
+                }
+            }
+            return 0;
         }
 
         // ------------------------------------------------------------ glb

@@ -8,7 +8,7 @@
 
 import { readFileSync } from 'node:fs';
 
-function readTess(path) {
+export function readTess(path) {
   const buf = readFileSync(path);
   const dv = new DataView(buf.buffer, buf.byteOffset, buf.byteLength);
   const magic = buf.subarray(0, 8).toString('latin1');
